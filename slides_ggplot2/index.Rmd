@@ -84,7 +84,28 @@ library(tidyverse)
 
 ## "A picture is worth a thousand words"
 
-- Show Challenger space shuttle disaster
+- Show Challenger space shuttle disaster (Edward R. Tufte book)
+
+```{r fig.align='center', fig.width=9, fig.height=7, echo=FALSE, message=FALSE}
+# install.packages("DAAG")
+library(DAAG)
+data(orings)
+
+Damage <- c(11, 4, 4, 2, 0,0,0,0,0,0,4,0,4,0,0,0,0,4,0,0,0,0,0)
+oring <- cbind(orings, Damage)
+
+oring_C <- oring %>% mutate(Temperature_C=(Temperature-32)*(5/9))
+
+# we tell ggplot to use oring data + which is the x and the y variable
+# + plot points + give limits for the x axis
+chal1 <- ggplot(oring_C, aes(x= Temperature_C,y=jitter(Damage, factor=1/5) )  ) +
+  geom_point() + xlim(-5,30) + stat_smooth(method = loess, se=FALSE) +
+    annotate("rect", xmin=-3, xmax=-1,ymin=0,ymax=10,alpha=.3,fill="red") +
+    annotate("text", x=0, y=3,label="forecast \n temperature \n -3 to -1 C") +
+    ylab("Damage") + xlab("Temperature (C)") + theme_classic()
+chal1
+
+```
 
 ---
 
