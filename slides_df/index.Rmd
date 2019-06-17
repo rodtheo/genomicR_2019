@@ -193,17 +193,35 @@ plot(dftidy$Day, dftidy$measurement, xlab='Day', ylab='Measurement (mg)',col=as.
 data("iris")
 ``` 
 
+* * *
 
+# How do we read code?
+
+- Translate the following code into words:
+
+```{r, echo=TRUE, warning=FALSE}
+length(unique(iris$Species))
+```
 
 * * *
 
-# The pipe: `%>%`
+# Intuitive coding
+
+```{r, echo=TRUE, warning=FALSE}
+iris$Species %>% unique %>% length
+```
+
+* * *
+
+# The pipe operator: `%>%`
 
 - Free us from creating intermediate objects
 
 - Useful to concatenate multiple operations
 
-![](img/separate.png){.shadow width=75%}
+- `F(x)` is the same as `x %>% F`
+
+- "Take x and apply the function f"
 
 * * *
 
@@ -226,19 +244,11 @@ select(iris, Species, Sepal.Length)
 
 select(iris, Sepal.Length:Petal.Width)
 
-# Select all columns except Sepal.Length
+# Select all columns but Sepal.Length
 
-select(iris_tidy, -Sepal.Length)
+select(iris, -Sepal.Length)
 
 ```
-
-* * *
-
-## Organize our data
-
-* Is it in a tidy or a messy shape ?
-
-![](img/view_less.png){.shadow width=70%}
 
 * * *
 
@@ -248,7 +258,7 @@ select(iris_tidy, -Sepal.Length)
 1. Identify the variables which must be gathered resulting in a tidy data frame. Use the function `gather()` to arrange the first 4 columns into a variable called `Measure_Type` and its corresponding values into variable `Values`. Tip: select columns between with operator `:`
 
 ```{r eval=FALSE}
-gather( <put variables here> , key="sample", value="expression")
+gather( <put variables here> , key="Measure_type", value="Values")
 ```
 
 * * *
@@ -321,22 +331,6 @@ filter(iris_tidy, Sepal.Length > 4 | Petal.Length > 4)
 ## Logical Operators
 
 ![](img/transform-logical.png){.shadow width=70%}
-
-* * *
-
-## Missing Values
-
-- R reports not available information as `NA`
-- It can be "contagious" to analysis
-    - Suppose we want to calculate the mean expression of all genes
-        
-        `> mean(cleaned_data$expression)`
-        
-    >- However, we get this message: [NA]{.red-bg}    
-- We have to handle `NAs`
-    - default to dplyr is to ignore them
-    - would like to know how many NAs?
-        >- Ex: filter(cleaned_data,  `is.na(expression)` )
 
 * * *
 
@@ -413,13 +407,13 @@ arrange(iris_tidy, desc(Values))
 |
 
 ```{r}
-summarise(iris_tidy, mean_expression = mean(Values, na.rm = TRUE))
+summarise(iris_tidy, mean_length = mean(Values, na.rm = TRUE))
 ```
 
 - We can use function `n()` to count the number of observations
 
 ```{r}
-summarise(iris_tidy, mean_expression = mean(Values, na.rm = TRUE), count = n())
+summarise(iris_tidy, mean_length = mean(Values, na.rm = TRUE), count = n())
 ```
 
 * * *
@@ -451,44 +445,9 @@ iris_tidy %>%
 iris_tidy %>%
   group_by(Species, Measure_type) %>% 
     summarise(
-      least_expr = min(Values),
-      most_expr = max(Values)
+      least_meas = min(Values),
+      most_meas = max(Values)
     )
-```
-
-* * *
-
-## Summary functions
-
-- Measures of location: `mean()`, `median()`
-- Measures of spread: `sd()`
-- Measures of rank: `min()`, `max()`
-    * Example: the most and least expression values?
-    * First we have to filter the missing values !
-
-```{r eval=FALSE}
-#cleaned_data %>%
-#  filter(!is.na(expression)) %>%
-#  group_by(nutrient, rate) %>% 
-#    summarise(
-#      least_expr = min(expression),
-#      most_expr = max(expression)
-#    )
-```
-
-* * *
-
-```{r, echo=FALSE, warning=FALSE}
-#library(ggplot2)
-```
-
-```{r}
-#cleaned_data %>%
-#        filter(BP == "leucine biosynthesis") %>%
-#        ggplot(aes(rate, expression, color = nutrient)) +
-#        geom_point() +
-#        geom_line() +
-#        facet_wrap(~name)
 ```
 
 * * *
@@ -496,13 +455,12 @@ iris_tidy %>%
 # Take home message
 
 - `dplyr` and `tidyr` functions to manipulate your data:
-  - `gather()`
-  - `separate()`
-  - `filter()`
-  - `select()`
-  - `mutate()`
-  - `arrange()`
-  - `summarise()`
+  - `gather()`: save your life.
+  - `filter()`: picks cases/observations based on their values.
+  - `select()`: picks variables based on their names.
+  - `mutate()`: adds new variables that are functions of evisting variables.
+  - `arrange()`: changes the ordering of the rows.
+  - `summarise()`: reduces multiple values down to a single summary.
   
 * * *
 
