@@ -58,7 +58,6 @@ mark {
 
 ## Outline
 
-1. Introduction
 2. Rationale behind ggplot2
 3. "Hello World" Plot
 4. Basic Template
@@ -73,30 +72,6 @@ mark {
 13. Saving Plots
 
 
-
---- .segue
-
-# Introduction
-
----
-
-## "A picture is worth a thousand words"
-
-- Show Challenger space shuttle disaster (Edward R. Tufte book)
-
-<img src="assets/fig/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" />
-
----
-
-## "A picture is worth a thousand words"
-
-- Always plot the data.
-
-- Replace (or complement) 'typical' tables of data or statistical results with figures that are more compelling and accessible.
-
-- Whenever possible, generate figures that overlay / juxtapose observed data and analytical results, e.g. the 'fit'.
-
-(source: jenny@UBC)
 
 --- .segue
 
@@ -115,7 +90,7 @@ Comparison for simple graphs:
 hist(iris$Sepal.Width)
 ```
 
-![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3-1.png)
+![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-2-1.png)
 
 *** =right
 
@@ -125,7 +100,7 @@ ggplot(data = iris) +
     geom_histogram(mapping = aes(x = Sepal.Width), binwidth = 0.25) + theme_classic()
 ```
 
-![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-1.png)
+![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3-1.png)
 
 
 --- &twocol .class #flex
@@ -145,7 +120,7 @@ points(Sepal.Width ~ Sepal.Length, col = "blue", data = subset(iris, Species == 
 legend(6.5, 4.2, c("setosa", "versicolor", "virginica"), title = "Species", col = c("red", "green", "blue"), pch=c(1,1,1))
 ```
 
-![plot of chunk unnamed-chunk-5](assets/fig/unnamed-chunk-5-1.png)
+![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-1.png)
 
 *** =right
 
@@ -155,7 +130,7 @@ ggplot(data = iris) +
     geom_point(mapping = aes(x = Sepal.Length, y = Sepal.Width, colour = Species))
 ```
 
-![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-6-1.png)
+![plot of chunk unnamed-chunk-5](assets/fig/unnamed-chunk-5-1.png)
 
 ---
 
@@ -276,7 +251,7 @@ ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width))
 ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width))
 ```
 
-<img src="assets/fig/unnamed-chunk-10-1.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-9-1.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" style="display: block; margin: auto;" />
 
 <div class="alert alert-warning alert-dismissable">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -315,7 +290,7 @@ gp <- ggplot(data = iris) +
 gp
 ```
 
-<img src="assets/fig/unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-12-1.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" style="display: block; margin: auto;" />
 
 --- .segue
 
@@ -349,7 +324,7 @@ Do not worry about the main visual ! Use themes.
 gp + theme_classic()
 ```
 
-<img src="assets/fig/unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" style="display: block; margin: auto;" />
 
 ---
 
@@ -365,21 +340,7 @@ library(ggthemes)
 gp + theme_economist() + scale_colour_economist()
 ```
 
-<img src="assets/fig/unnamed-chunk-15-1.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" style="display: block; margin: auto;" />
-
----
-
-https://cran.r-project.org/web/packages/cowplot/index.html
-
-
-
-```r
-# install.packages("cowplot")
-library(cowplot)
-gp
-```
-
-<img src="assets/fig/unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" style="display: block; margin: auto;" />
 
 --- .segue
 
@@ -409,7 +370,7 @@ ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point(mapping = aes(colour = Species))
 ```
 
-<img src="assets/fig/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" style="display: block; margin: auto;" />
 
 ---
 
@@ -426,7 +387,7 @@ ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
 ## Warning: Using size for a discrete variable is not advised.
 ```
 
-<img src="assets/fig/unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" style="display: block; margin: auto;" />
 
 ---
 
@@ -441,7 +402,7 @@ ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point(mapping = aes(shape = Species), size = 3)
 ```
 
-<img src="assets/fig/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" style="display: block; margin: auto;" />
 
 *** =pnotes
 
@@ -457,7 +418,7 @@ ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point(mapping = aes(shape = Species), size = 3, position = "jitter")
 ```
 
-<img src="assets/fig/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" style="display: block; margin: auto;" />
 
 ---
 
@@ -483,7 +444,7 @@ ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point(mapping = aes(colour = "blue"))
 ```
 
-<img src="assets/fig/unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" style="display: block; margin: auto;" />
 
 --- &twocol .class #flex
 
@@ -500,7 +461,7 @@ ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point(mapping = aes(colour = Species))
 ```
 
-<img src="assets/fig/unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" />
 
 *** =right
 
@@ -510,7 +471,7 @@ ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point(colour = "blue")
 ```
 
-<img src="assets/fig/unnamed-chunk-24-1.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" style="display: block; margin: auto;" />
 
 ---
 
@@ -522,7 +483,7 @@ ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point(mapping = aes(colour = Sepal.Length > 7))
 ```
 
-<img src="assets/fig/unnamed-chunk-25-1.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" style="display: block; margin: auto;" />
 
 ---
 
@@ -533,7 +494,7 @@ Q3. Take a subset of `diamonds` dataset and reproduce the following plot:
 d2 <- diamonds[sample(1:dim(diamonds)[1],1000),]
 ```
 
-<img src="assets/fig/unnamed-chunk-27-1.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-25-1.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" style="display: block; margin: auto;" />
 
 --- .segue
 
@@ -552,7 +513,7 @@ ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point(mapping = aes(colour = Species)) + geom_smooth(method = "lm")
 ```
 
-<img src="assets/fig/unnamed-chunk-28-1.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-26-1.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" style="display: block; margin: auto;" />
 
 ---
 
@@ -563,7 +524,7 @@ ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
     geom_smooth(method = "lm", aes(color = Species))
 ```
 
-<img src="assets/fig/unnamed-chunk-29-1.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-27-1.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" style="display: block; margin: auto;" />
 
 --- .segue
 
@@ -583,7 +544,7 @@ ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point(mapping = aes(colour = Species)) + geom_smooth(method = "lm", aes(color = Species)) + facet_wrap(~Species)
 ```
 
-<img src="assets/fig/unnamed-chunk-30-1.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-28-1.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" style="display: block; margin: auto;" />
 
 ---
 
@@ -596,7 +557,7 @@ ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
     geom_smooth(method = "lm", aes(color = Species)) + facet_grid(. ~ Species)
 ```
 
-<img src="assets/fig/unnamed-chunk-31-1.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-29-1.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" style="display: block; margin: auto;" />
 
 --- .segue
 
@@ -614,7 +575,7 @@ ggplot(data = iris) +
     geom_bar(mapping = aes(x = Species, fill = Species))
 ```
 
-<img src="assets/fig/unnamed-chunk-32-1.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-30-1.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" style="display: block; margin: auto;" />
 
 ---
 
@@ -664,7 +625,7 @@ ggplot(data = iris_count) +
     geom_bar(mapping = aes(x = Species, y=freq, fill=Species), stat = "identity")
 ```
 
-<img src="assets/fig/unnamed-chunk-37-1.png" title="plot of chunk unnamed-chunk-37" alt="plot of chunk unnamed-chunk-37" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-35-1.png" title="plot of chunk unnamed-chunk-35" alt="plot of chunk unnamed-chunk-35" style="display: block; margin: auto;" />
 
 ---
 
@@ -683,40 +644,40 @@ R1.
 ggplot(data = iris) + geom_histogram(mapping = aes(x = Petal.Width), binwidth = 0.3)
 ```
 
-<img src="assets/fig/unnamed-chunk-38-1.png" title="plot of chunk unnamed-chunk-38" alt="plot of chunk unnamed-chunk-38" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-36-1.png" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" style="display: block; margin: auto;" />
 
 ---
 
 ## Error bars
 
-- We can plug error bars into the chart. First let's tidy our data and calculate the mean and standard sample error for the length grouped by structure and Species.
+- We can plug error bars into the chart. First let's tidy our data and calculate the mean and standard deviation for the length grouped by structure and Species.
 
 
 ```r
 gather_iris <- gather(iris, Sepal.Length:Petal.Width,
                              key="structure", value="size")
 iris_sum <- gather_iris %>% group_by(structure, Species) %>%
-                    summarise(m = mean(size), sd = sd(size), sem = sd(size)/(sqrt(n())))
+                    summarise(m = mean(size), sd = sd(size))
 iris_sum
 ```
 
 ```
-## # A tibble: 12 x 5
-## # Groups:   structure [?]
-##    structure    Species        m    sd    sem
-##    <chr>        <fct>      <dbl> <dbl>  <dbl>
-##  1 Petal.Length setosa     1.46  0.174 0.0246
-##  2 Petal.Length versicolor 4.26  0.470 0.0665
-##  3 Petal.Length virginica  5.55  0.552 0.0780
-##  4 Petal.Width  setosa     0.246 0.105 0.0149
-##  5 Petal.Width  versicolor 1.33  0.198 0.0280
-##  6 Petal.Width  virginica  2.03  0.275 0.0388
-##  7 Sepal.Length setosa     5.01  0.352 0.0498
-##  8 Sepal.Length versicolor 5.94  0.516 0.0730
-##  9 Sepal.Length virginica  6.59  0.636 0.0899
-## 10 Sepal.Width  setosa     3.43  0.379 0.0536
-## 11 Sepal.Width  versicolor 2.77  0.314 0.0444
-## 12 Sepal.Width  virginica  2.97  0.322 0.0456
+## # A tibble: 12 x 4
+## # Groups:   structure [4]
+##    structure    Species        m    sd
+##    <chr>        <fct>      <dbl> <dbl>
+##  1 Petal.Length setosa     1.46  0.174
+##  2 Petal.Length versicolor 4.26  0.470
+##  3 Petal.Length virginica  5.55  0.552
+##  4 Petal.Width  setosa     0.246 0.105
+##  5 Petal.Width  versicolor 1.33  0.198
+##  6 Petal.Width  virginica  2.03  0.275
+##  7 Sepal.Length setosa     5.01  0.352
+##  8 Sepal.Length versicolor 5.94  0.516
+##  9 Sepal.Length virginica  6.59  0.636
+## 10 Sepal.Width  setosa     3.43  0.379
+## 11 Sepal.Width  versicolor 2.77  0.314
+## 12 Sepal.Width  virginica  2.97  0.322
 ```
 
 ---
@@ -728,13 +689,12 @@ So, to plot the mean with bars we need some data transformations.
 bar_ann <- ggplot(data = iris_sum, mapping = aes(x = structure, y = m, fill = Species)) +
   geom_bar(position = "dodge", stat = "identity") +
   geom_errorbar(mapping = aes(ymin = (m-sd), ymax = (m+sd)),
-                width = .2, position=position_dodge(.9)) +
-    geom_errorbar(mapping = aes(ymin = (m-sem), ymax = (m+sem)), width = .2, position=position_dodge(0.9), colour='red') +
+                width = .2, position=position_dodge(.9), colour='red') +
   xlab(NULL) + ylab("mean")
 bar_ann
 ```
 
-<img src="assets/fig/unnamed-chunk-40-1.png" title="plot of chunk unnamed-chunk-40" alt="plot of chunk unnamed-chunk-40" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-38-1.png" title="plot of chunk unnamed-chunk-38" alt="plot of chunk unnamed-chunk-38" style="display: block; margin: auto;" />
 
 --- .segue
 
@@ -754,7 +714,7 @@ p <- ggplot(data = iris) +
 p + scale_colour_brewer()
 ```
 
-<img src="assets/fig/unnamed-chunk-41-1.png" title="plot of chunk unnamed-chunk-41" alt="plot of chunk unnamed-chunk-41" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-39-1.png" title="plot of chunk unnamed-chunk-39" alt="plot of chunk unnamed-chunk-39" style="display: block; margin: auto;" />
 
 ---
 
@@ -767,7 +727,7 @@ p + scale_colour_brewer()
 p + scale_colour_brewer(palette = "YlOrBr")
 ```
 
-<img src="assets/fig/unnamed-chunk-42-1.png" title="plot of chunk unnamed-chunk-42" alt="plot of chunk unnamed-chunk-42" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-40-1.png" title="plot of chunk unnamed-chunk-40" alt="plot of chunk unnamed-chunk-40" style="display: block; margin: auto;" />
 
 ---
 
@@ -780,7 +740,7 @@ p + scale_colour_brewer(palette = "YlOrBr")
 p + scale_colour_manual(values = c("#4286f4", "#1b4484", "#051a3a"))
 ```
 
-<img src="assets/fig/unnamed-chunk-43-1.png" title="plot of chunk unnamed-chunk-43" alt="plot of chunk unnamed-chunk-43" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-41-1.png" title="plot of chunk unnamed-chunk-41" alt="plot of chunk unnamed-chunk-41" style="display: block; margin: auto;" />
 
 ---
 
@@ -808,21 +768,7 @@ Supply text strings (using `\n` for line breaks) or mathematical expressions in 
 p + xlab("Sepal Length \n(cm)") + ylab("Sepal Width (cm)") + labs(colour = "Sp")
 ```
 
-<img src="assets/fig/unnamed-chunk-44-1.png" title="plot of chunk unnamed-chunk-44" alt="plot of chunk unnamed-chunk-44" style="display: block; margin: auto;" />
-
----
-
-## Labels with math expressions
-
-- Use the template `+ expression(paste(<STRING>, <MATH VAR>, <REMAINING STRING))`. Remove axis label with `NULL` expression.
-
-
-```r
-p + xlab("Sepal Length \n(cm)") + ylab(expression(paste("Sepal Width (",sqrt(cm),")"))) + 
-  labs(colour = NULL) + scale_y_sqrt()
-```
-
-<img src="assets/fig/unnamed-chunk-45-1.png" title="plot of chunk unnamed-chunk-45" alt="plot of chunk unnamed-chunk-45" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-42-1.png" title="plot of chunk unnamed-chunk-42" alt="plot of chunk unnamed-chunk-42" style="display: block; margin: auto;" />
 
 ---
 
@@ -835,7 +781,7 @@ The breaks argument controls which values appear as tick marks on axes and keys 
 p + scale_x_continuous( breaks = seq(4, 8, 0.5) )
 ```
 
-<img src="assets/fig/unnamed-chunk-46-1.png" title="plot of chunk unnamed-chunk-46" alt="plot of chunk unnamed-chunk-46" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-43-1.png" title="plot of chunk unnamed-chunk-43" alt="plot of chunk unnamed-chunk-43" style="display: block; margin: auto;" />
 
 *** =pnotes
 
@@ -850,7 +796,7 @@ Each break can have an associated label, controlled by the labels argument.
 p + scale_x_continuous( breaks = seq(4, 8, 0.5) , labels = paste(seq(4, 8, 0.5), "cm"))
 ```
 
-<img src="assets/fig/unnamed-chunk-47-1.png" title="plot of chunk unnamed-chunk-47" alt="plot of chunk unnamed-chunk-47" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-44-1.png" title="plot of chunk unnamed-chunk-44" alt="plot of chunk unnamed-chunk-44" style="display: block; margin: auto;" />
 
 ---
 
@@ -869,7 +815,7 @@ p <- p + scale_colour_discrete(name = "Species",
                                      expression(paste("Iris ", italic("virginica"))))
 ```
 
-<img src="assets/fig/unnamed-chunk-48-1.png" title="plot of chunk unnamed-chunk-48" alt="plot of chunk unnamed-chunk-48" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-45-1.png" title="plot of chunk unnamed-chunk-45" alt="plot of chunk unnamed-chunk-45" style="display: block; margin: auto;" />
 
 --- .segue
 
@@ -879,7 +825,7 @@ p <- p + scale_colour_discrete(name = "Species",
 
 - Use box plots to illustrate the spread and differences of samples.
 - $n=20$ samples from $N(0,1)$.
-<img src="assets/fig/unnamed-chunk-49-1.png" title="plot of chunk unnamed-chunk-49" alt="plot of chunk unnamed-chunk-49" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-46-1.png" title="plot of chunk unnamed-chunk-46" alt="plot of chunk unnamed-chunk-46" style="display: block; margin: auto;" />
 
 
 ```
@@ -924,7 +870,7 @@ ggplot(data = gather_iris) +
   scale_x_discrete(limits = c("Petal.Width", "Sepal.Width", "Petal.Length", "Sepal.Length"))
 ```
 
-<img src="assets/fig/unnamed-chunk-52-1.png" title="plot of chunk unnamed-chunk-52" alt="plot of chunk unnamed-chunk-52" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-49-1.png" title="plot of chunk unnamed-chunk-49" alt="plot of chunk unnamed-chunk-49" style="display: block; margin: auto;" />
 
 ---
 
@@ -992,7 +938,7 @@ boxall <- ggplot(data = iris_2sp) +
 boxall
 ```
 
-<img src="assets/fig/unnamed-chunk-56-1.png" title="plot of chunk unnamed-chunk-56" alt="plot of chunk unnamed-chunk-56" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-53-1.png" title="plot of chunk unnamed-chunk-53" alt="plot of chunk unnamed-chunk-53" style="display: block; margin: auto;" />
 
 --- .segue
 
@@ -1019,7 +965,7 @@ p <- ggboxplot(iris_2sp, x = "Species", y="Petal.Length", color="Species",
 p
 ```
 
-<img src="assets/fig/unnamed-chunk-57-1.png" title="plot of chunk unnamed-chunk-57" alt="plot of chunk unnamed-chunk-57" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-54-1.png" title="plot of chunk unnamed-chunk-54" alt="plot of chunk unnamed-chunk-54" style="display: block; margin: auto;" />
 
 ---
 
@@ -1032,7 +978,7 @@ plabeled <- ggboxplot(iris_2sp, x = "Species", y="Petal.Length", color="Species"
 plabeled
 ```
 
-<img src="assets/fig/unnamed-chunk-58-1.png" title="plot of chunk unnamed-chunk-58" alt="plot of chunk unnamed-chunk-58" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-55-1.png" title="plot of chunk unnamed-chunk-55" alt="plot of chunk unnamed-chunk-55" style="display: block; margin: auto;" />
 
 ---
 
@@ -1044,7 +990,7 @@ ggbarplot(gather_iris, x = "structure", y = "size", color = "Species",
           add=c("mean_sd"), palette = "jco", position = position_dodge(0.9), ylab="mean")
 ```
 
-<img src="assets/fig/unnamed-chunk-59-1.png" title="plot of chunk unnamed-chunk-59" alt="plot of chunk unnamed-chunk-59" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-56-1.png" title="plot of chunk unnamed-chunk-56" alt="plot of chunk unnamed-chunk-56" style="display: block; margin: auto;" />
 
 
 --- .segue
@@ -1079,94 +1025,6 @@ ggsave("~/path/to/figure/filename.eps")
 ggsave("~/path/to/figure/filename.svg")
 ggsave("~/path/to/figure/filename.pdf")
 ```
-
---- .segue
-
-# Placing multiple plots
-
----
-
-
-```r
-library(cowplot)
-```
-
-
-<img width=50% height=50% src="figure/canvas.png" align="middle"></img>
-
-
-
-```r
-ggdraw()
-```
-
-<img src="assets/fig/unnamed-chunk-61-1.png" title="plot of chunk unnamed-chunk-61" alt="plot of chunk unnamed-chunk-61" style="display: block; margin: auto;" />
-
----
-
-
-```r
-ggdraw() + draw_plot(boxall, x = 0, y = 0, 
-                     width = 0.5, height = 1) +
-           draw_plot(p, x = 0.5, y = 0,
-                     width = 0.5, height = 1)
-```
-
-<img src="assets/fig/unnamed-chunk-62-1.png" title="plot of chunk unnamed-chunk-62" alt="plot of chunk unnamed-chunk-62" style="display: block; margin: auto;" />
-
----
-
-
-```r
-library(RColorBrewer)
-
-pal <- brewer.pal(name = "RdYlBu", n = 3)
-
-pmulti <- ggdraw() +
-    draw_plot(bar_ann + scale_fill_manual(values = pal) + 
-                  theme(axis.text.x = element_text(angle=60, vjust=0.5), 
-                        plot.margin = unit(c(6,0,6,0), "pt"), legend.position = "none") + 
-                  ylab(""), x = 0, y = 0.1, width = 0.5, height = 0.8) 
-```
-
-
-```r
-pmulti <- pmulti + draw_plot(p + scale_colour_manual(values = c(pal[1], pal[3])) + 
-                  theme(plot.margin = unit(c(6,6,6,6), "pt")) + 
-                  theme(legend.position = "none"), x = 0.5, y = 0.2,
-                    width = 0.25, height = 0.8) +
-    draw_plot(plabeled + scale_colour_manual(values = c(pal[1], pal[3])) +
-                  theme(plot.margin = unit(c(6,6,6,6), "pt"))+ 
-                  theme(legend.position = "none"), x = 0.75, y = 0.2,
-                    width = 0.25, height = 0.8)
-```
-
----
-
-
-```r
-# write plot labels (A, B, C ...)
-pmulti <- pmulti + draw_plot_label(label = c("A", "B", "C"), 
-                                   size = 15, x = c(0, 0.5, 0.75), y =c(1, 1, 1))
-
-# extract the legend from one of the plots
-# (clearly the whole thing only makes sense if all plots
-# have the same legend, so we can arbitrarily pick one.)
-legend <- get_legend(bar_ann + theme(legend.position = "bottom") + scale_fill_manual(values = pal))
-pmulti <- pmulti + draw_plot(legend, x=0, y=0)
-```
-
-
-
-
-```r
-#save_plot("/Users/rodtheo/Downloads/temp/firstDeck/figure/multiplot.png", 
-#               pmulti, base_height = 8, base_width=12)
-```
-
----
-
-<img width=75% height=75% src="figure/multiplot.png" align="middle"></img>
 
 --- .segue
 

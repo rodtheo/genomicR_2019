@@ -30,8 +30,8 @@ output:
 | Day | Sample 1 | Sample 2 | Sample 3 |
 |-----|:--------:|:--------:|:--------:|
 | 1   |   100    |    120   |   89     |
-| 2   |   50    |    30   |   55     |
-| 3   |   25    |    10   |        |
+| 5   |   50    |    30   |   55     |
+| 10   |   25    |    10   |        |
 
 ```{r, echo=FALSE, warning=FALSE, include=FALSE}
 library(dplyr)
@@ -60,8 +60,8 @@ knitr::kable(
 | Day | Sample 1 | Sample 2 | Sample 3 |
 |-----|:--------:|:--------:|:--------:|
 | 1   |   100    |    120   |   89     |
-| 2   |   50    |    30   |   55     |
-| 3   |   25    |    10   |        |
+| 5   |   50    |    30   |   55     |
+| 10   |   25    |    10   |        |
 
 ```{r, echo=TRUE}
 
@@ -166,6 +166,15 @@ gather(dfmessy, Sample_1, Sample_2, Sample_3, key = 'Samples', value = 'Measurem
 
 * * *
 
+## Gather
+
+- Tidying your data can be annoying..
+
+- Tips:
+    - avoid naming your new columns with the same names as old
+
+* * *
+
 ## Better Solution
 
 ```{r}
@@ -174,77 +183,17 @@ plot(dftidy$Day, dftidy$measurement, xlab='Day', ylab='Measurement (mg)',col=as.
 
 * * * 
 
-## When things become interesting
+## Question
 
-- [Brauer 2008](http://www.molbiolcell.org/content/19/1/352.abstract) used microarrays to test the effect of starvation and growth rate on S. *cerevisiae*
-- Control the growth rate restricting the feeding of a nutrient to the medium using a chemostat
-- For example, you could limit the yeast's supply of leucine (an essential amino acid)
-- **6** nutrients (glucose-G, ammonium-N, phosphate-P, sulfate-S, leucine-L or uracil-U )
-- **6** dilution rates ranging from $~0.05\ h^{-1}$ (doubling time of about 14h) to more than $0.3\ h^{-1}$ (double time of about 2h)
+- Load the `iris` dataset typing the code below and check if this data frame is in tidy or messy shape.
 
-```{r, warning=FALSE}
-library(readr)
-original_data <- read_delim("http://varianceexplained.org/files/Brauer2008_DataSet1.tds", delim = "\t")
-```
+<img width=50% height=50% src="img/iris.png"></img>
 
-```{r, echo=TRUE, eval=FALSE}
-View(head(original_data))
-```
+```{r, echo=TRUE, warning=FALSE}
+data("iris")
+``` 
 
-* * *
 
-## Exploring Expression Dataset
-
-```{r echo=FALSE, eval=FALSE}
-
-str(as.data.frame(original_data))
-
-```
-
-* What do we have in each column ?
-
-![](img/view.png){.shadow width=80%}
-
-* * *
-
-## Multiple Variables stored in one Column
-
-```{r}
-original_data$NAME[1:3]
-```
-
-- The `NAME` column contains lots of information
-    - Gene name
-    - Biological process
-    - Molecular function
-    - Systematic ID
-    - Another ID number
-
-* * *
-
-# Separate
-
-- Syntax 1:
-
-|       [separate(]{.red .monospace}[\<name of the data frame\>]{.blue .monospace}[,]{.red .monospace}[ \ \<name of the variable (without quotes) to separate\>]{.blue .monospace}[,]{.red .monospace}[ \ \< vector with new variable names\>]{.blue .monospace}[,\ sep=]{.red .monospace}[ \ separator]{.blue .monospace}[)]{.red .monospace} 
-|
-
-```{r}
-cleaned_data <- separate(original_data, NAME, c("name", "BP", "MF", "systematic_name", "number"), sep="\\|\\|")
-```
-
-- Syntax 2:
-
-| `DATAFRAME` [\%>\%]{.red .monospace} [separate(]{.red .monospace}[ \ \<name of the variable (without quotes) to separate\>]{.blue .monospace}[,]{.red .monospace}[ \ \< vector with new variable names\>]{.blue .monospace}[,\ sep=]{.red .monospace}[ \ separator]{.blue .monospace}[)]{.red .monospace} 
-|
-
-```{r}
-cleaned_data <- original_data %>% separate(NAME, c("name", "BP", "MF", "systematic_name", "number"), sep="\\|\\|")
-```
-
-- Observations:
-    - `dplyr` functions never modify their inputs
-    - Either print the result of save to a variable
 
 * * *
 
@@ -269,33 +218,17 @@ cleaned_data <- original_data %>% separate(NAME, c("name", "BP", "MF", "systemat
 |
 
 ```{r eval=FALSE}
-# Select columns by name: name, BP, MF, systematic_name
+# Select columns by name: Species, Sepal.Length
 
-select(cleaned_data, name, BP, MF, systematic_name)
+select(iris, Species, Sepal.Length)
 
-# Select all columns between name and systematic_name (inclusive)
+# Select all columns between Sepal.Length and Petal.Width (inclusive)
 
-select(cleaned_data, name:systematic_name)
+select(iris, Sepal.Length:Petal.Width)
 
-# Select all columns except number and GWEIGHT
+# Select all columns except Sepal.Length
 
-select(cleaned_data, -number, -GWEIGHT)
-
-```
-
-* * *
-
-## Exercise
-
-1. Create a new dataframe from `cleaned_data` with all variables except number, GID, YORF and GWEIGHT. Save it in a new object called `cleaned_data_new`.
-
-* * *
-
-## Solution
-
-```{r}
-
-(cleaned_data_new <- cleaned_data %>% select(-number, -GID, -YORF, -GWEIGHT))
+select(iris_tidy, -Sepal.Length)
 
 ```
 
@@ -312,7 +245,7 @@ select(cleaned_data, -number, -GWEIGHT)
 ## Gathering
 
 
-1. Identify the variables which must be gathered resulting in a tidy data frame. Tip: select columns between with operator `:`
+1. Identify the variables which must be gathered resulting in a tidy data frame. Use the function `gather()` to arrange the first 4 columns into a variable called `Measure_Type` and its corresponding values into variable `Values`. Tip: select columns between with operator `:`
 
 ```{r eval=FALSE}
 gather( <put variables here> , key="sample", value="expression")
@@ -320,19 +253,17 @@ gather( <put variables here> , key="sample", value="expression")
 
 * * *
 
-## Gathering all together
+## Answer
 
-```{r}
-cleaned_data <- original_data %>%
-                separate(NAME, c("name", "BP", "MF", "systematic_name", "number"), sep="\\|\\|") %>%
-                select(-number, -GID, -YORF, -GWEIGHT) %>%
-                gather(G0.05:U0.3, key="sample", value="expression")
-cleaned_data
+```{r, echo=TRUE, warning=FALSE}
+
+iris_tidy <- iris %>% gather(Sepal.Length:Petal.Width, key="Measure_type", value = "Values")
+
 ```
 
 ```{r, echo=FALSE}
 knitr::kable(
-  head(cleaned_data)
+  head(iris_tidy)
 )
 
 ```
@@ -343,7 +274,7 @@ knitr::kable(
 
 ```{r}
 
-rename(cleaned_data, gene_name = name)
+rename(iris_tidy, Vals = Values)
 
 ```
 
@@ -358,63 +289,31 @@ rename(cleaned_data, gene_name = name)
 |
 
 ```{r}
-filter(cleaned_data, BP == " mRNA polyadenylylation* ")
-```
-
-- Note the whitespaces at the start and end of some of the columns, which is inconvenient
-
-* * *
-
-# Removing Whitespaces
-
-- Whitespaces at the start and end of some of the columns, which is inconvenient
-
-```{r}
-head(cleaned_data$BP)
-```
-
-```{r}
-cleaned_data <- cleaned_data %>% mutate_each(funs(trimws), name:systematic_name)
-```
-
-```{r echo=FALSE}
-head(cleaned_data$BP)
+filter(iris_tidy, Species == "versicolor")
 ```
 
 * * *
 
 ## Back to Filter
 
-- Filter the genes involved in leucine biosynthesis (Biological Process) with expression level grater than 1.0
+- Filter the observations that belong to setosa species with Sepal Length bigger than 1 cm.
 
 ```{r}
-filter(cleaned_data, BP=="leucine biosynthesis", expression > 1.0)
-```
-
-* * *
-
-## One more step to clean our data
-
-- Separate to create two new variables from information in sample column.
-
-```{r}
-cleaned_data <- cleaned_data %>% separate(sample, c("nutrient", "rate"), sep=1, convert=TRUE)
-
-head(cleaned_data)
+filter(iris_tidy, Species=="setosa", Values > 1.0)
 ```
 
 * * *
 
 ## Use Logical Operators
 
-- Which one of the following commands should we use to find all genes are involved in `mRNA polyadenylylation*` and have RNA binding activity?
+- Which one of the following commands should we use to find all individuals with Sepal Length or Petal Length bigger than 4 cm ?
 
 ```{r eval=FALSE}
-filter(cleaned_data, BP == "mRNA polyadenylylation*" & MF == "RNA binding")
+filter(iris_tidy, Sepal.Length > 4 & Petal.Length > 4)
 ```
 
 ```{r eval=FALSE}
-filter(cleaned_data, BP == "mRNA polyadenylylation*" | BP == "RNA binding")
+filter(iris_tidy, Sepal.Length > 4 | Petal.Length > 4)
 ```
 
 * * * 
@@ -453,20 +352,14 @@ filter(cleaned_data, BP == "mRNA polyadenylylation*" | BP == "RNA binding")
 
 ```{r eval=FALSE}
 
-cleaned_data %>% mutate(expression_brute = 2**expression) %>% select(expression , expression_brute)
+iris_tidy %>% mutate(log_values = log2(Values))
 
 ```
 
 - Useful creation functions:
   * Arithmectic operators: `+`, `-`, `/`, `*`
   * Logs: `log2()`, `log10()`
-  * Ranking:
-
-```{r}
-	  y <- c(1,2,2,NA,4,3)
-	  min_rank(y)
-```
-
+  
 * * *
 
 # Sorting rows with `arrange()`
@@ -476,13 +369,13 @@ cleaned_data %>% mutate(expression_brute = 2**expression) %>% select(expression 
 1. In ascending order by one or more columns (variables):
 
 ```{r eval=FALSE}
-arrange(cleaned_data, expression)
+arrange(iris_tidy, Values)
 ```
 
 2. Use `desc()` to re-order in descending order:
 
 ```{r eval=FALSE}
-arrange(cleaned_data, desc(expression))
+arrange(iris_tidy, desc(Values))
 ```
 
 
@@ -500,11 +393,11 @@ arrange(cleaned_data, desc(expression))
 
 ```{r}
 
-top10 <- cleaned_data %>% filter(nutrient == "L") %>%
-                              arrange(desc(expression))
+#top10 <- cleaned_data %>% filter(nutrient == "L") %>%
+                        #      arrange(desc(expression))
 
-top10_leu <- top10[1:10,]
-top10_leu
+#top10_leu <- top10[1:10,]
+#top10_leu
 ```
 
 * * *
@@ -520,13 +413,13 @@ top10_leu
 |
 
 ```{r}
-summarise(cleaned_data, mean_expression = mean(expression, na.rm = TRUE))
+summarise(iris_tidy, mean_expression = mean(Values, na.rm = TRUE))
 ```
 
 - We can use function `n()` to count the number of observations
 
 ```{r}
-summarise(cleaned_data, mean_expression = mean(expression, na.rm = TRUE), count = n())
+summarise(iris_tidy, mean_expression = mean(Values, na.rm = TRUE), count = n())
 ```
 
 * * *
@@ -538,9 +431,9 @@ summarise(cleaned_data, mean_expression = mean(expression, na.rm = TRUE), count 
 ```{r}
 # The exactly above code applied to a data frame grouped by nutrient and rate, 
 # we get the average delay per date
-cleaned_data %>% 
-  group_by(nutrient, rate) %>%
-    summarise(mean_expression_by_rate = mean(expression, na.rm = TRUE), count = n())
+iris_tidy %>% 
+  group_by(Species, Measure_type) %>%
+    summarise(mean_measure = mean(Values, na.rm = TRUE), count = n())
 
 ```
 
@@ -555,11 +448,11 @@ cleaned_data %>%
     
     
 ```{r eval=FALSE}
-cleaned_data %>%
-  group_by(nutrient, rate) %>% 
+iris_tidy %>%
+  group_by(Species, Measure_type) %>% 
     summarise(
-      least_expr = min(expression),
-      most_expr = max(expression)
+      least_expr = min(Values),
+      most_expr = max(Values)
     )
 ```
 
@@ -574,28 +467,28 @@ cleaned_data %>%
     * First we have to filter the missing values !
 
 ```{r eval=FALSE}
-cleaned_data %>%
-  filter(!is.na(expression)) %>%
-  group_by(nutrient, rate) %>% 
-    summarise(
-      least_expr = min(expression),
-      most_expr = max(expression)
-    )
+#cleaned_data %>%
+#  filter(!is.na(expression)) %>%
+#  group_by(nutrient, rate) %>% 
+#    summarise(
+#      least_expr = min(expression),
+#      most_expr = max(expression)
+#    )
 ```
 
 * * *
 
 ```{r, echo=FALSE, warning=FALSE}
-library(ggplot2)
+#library(ggplot2)
 ```
 
 ```{r}
-cleaned_data %>%
-        filter(BP == "leucine biosynthesis") %>%
-        ggplot(aes(rate, expression, color = nutrient)) +
-        geom_point() +
-        geom_line() +
-        facet_wrap(~name)
+#cleaned_data %>%
+#        filter(BP == "leucine biosynthesis") %>%
+#        ggplot(aes(rate, expression, color = nutrient)) +
+#        geom_point() +
+#        geom_line() +
+#        facet_wrap(~name)
 ```
 
 * * *
@@ -614,6 +507,7 @@ cleaned_data %>%
 * * *
 
 ## Bibliography
+
 
 http://varianceexplained.org/r/tidy-genomics/
 

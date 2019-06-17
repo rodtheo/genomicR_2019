@@ -98,7 +98,6 @@ mark {
   </hgroup>
   <article data-timings="">
     <ol>
-<li>Introduction</li>
 <li>Rationale behind ggplot2</li>
 <li>&quot;Hello World&quot; Plot</li>
 <li>Basic Template</li>
@@ -119,48 +118,6 @@ mark {
 
 <slide class="segue" id="slide-3" style="background:;">
   <hgroup>
-    <h1>Introduction</h1>
-  </hgroup>
-  <article data-timings="">
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-4" style="background:;">
-  <hgroup>
-    <h2>&quot;A picture is worth a thousand words&quot;</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>Show Challenger space shuttle disaster (Edward R. Tufte book)</li>
-</ul>
-
-<p><img src="assets/fig/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" /></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-5" style="background:;">
-  <hgroup>
-    <h2>&quot;A picture is worth a thousand words&quot;</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li><p>Always plot the data.</p></li>
-<li><p>Replace (or complement) &#39;typical&#39; tables of data or statistical results with figures that are more compelling and accessible.</p></li>
-<li><p>Whenever possible, generate figures that overlay / juxtapose observed data and analytical results, e.g. the &#39;fit&#39;.</p></li>
-</ul>
-
-<p>(source: jenny@UBC)</p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="segue" id="slide-6" style="background:;">
-  <hgroup>
     <h1>Rationale behind ggplot2</h1>
   </hgroup>
   <article data-timings="">
@@ -180,7 +137,7 @@ mark {
   <pre><code class="r">hist(iris$Sepal.Width)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"></p>
+<p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
 
 </div>
 <div style='float:right;width:48%;'>
@@ -188,7 +145,7 @@ mark {
     geom_histogram(mapping = aes(x = Sepal.Width), binwidth = 0.25) + theme_classic()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"></p>
+<p><img src="assets/fig/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"></p>
 
 </div>
   </article>
@@ -210,7 +167,7 @@ points(Sepal.Width ~ Sepal.Length, col = &quot;blue&quot;, data = subset(iris, S
 legend(6.5, 4.2, c(&quot;setosa&quot;, &quot;versicolor&quot;, &quot;virginica&quot;), title = &quot;Species&quot;, col = c(&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;), pch=c(1,1,1))
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-5-1.png" alt="plot of chunk unnamed-chunk-5"></p>
+<p><img src="assets/fig/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"></p>
 
 </div>
 <div style='float:right;width:48%;'>
@@ -218,14 +175,14 @@ legend(6.5, 4.2, c(&quot;setosa&quot;, &quot;versicolor&quot;, &quot;virginica&q
     geom_point(mapping = aes(x = Sepal.Length, y = Sepal.Width, colour = Species))
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-6-1.png" alt="plot of chunk unnamed-chunk-6"></p>
+<p><img src="assets/fig/unnamed-chunk-5-1.png" alt="plot of chunk unnamed-chunk-5"></p>
 
 </div>
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-9" style="background:;">
+<slide class="" id="slide-6" style="background:;">
   <hgroup>
     <h2>Why ggplot2</h2>
   </hgroup>
@@ -272,7 +229,7 @@ legend(6.5, 4.2, c(&quot;setosa&quot;, &quot;versicolor&quot;, &quot;virginica&q
   </aside>
 </slide>
 
-<slide class="" id="slide-10" style="background:;">
+<slide class="" id="slide-7" style="background:;">
   <hgroup>
     <h2>3 Key Components</h2>
   </hgroup>
@@ -295,7 +252,7 @@ legend(6.5, 4.2, c(&quot;setosa&quot;, &quot;versicolor&quot;, &quot;virginica&q
   </aside>
 </slide>
 
-<slide class="" id="slide-11" style="background:;">
+<slide class="" id="slide-8" style="background:;">
   <hgroup>
     <h2>RStudio&#39;s data visualization cheatsheet</h2>
   </hgroup>
@@ -310,7 +267,7 @@ legend(6.5, 4.2, c(&quot;setosa&quot;, &quot;versicolor&quot;, &quot;virginica&q
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-12" style="background:;">
+<slide class="segue" id="slide-9" style="background:;">
   <hgroup>
     <h1>&quot;Hello World&quot; Plot</h1>
   </hgroup>
@@ -320,7 +277,7 @@ legend(6.5, 4.2, c(&quot;setosa&quot;, &quot;versicolor&quot;, &quot;virginica&q
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-13" style="background:;">
+<slide class="" id="slide-10" style="background:;">
   <hgroup>
     <h2>First component: <strong>Data</strong></h2>
   </hgroup>
@@ -345,7 +302,7 @@ legend(6.5, 4.2, c(&quot;setosa&quot;, &quot;versicolor&quot;, &quot;virginica&q
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-14" style="background:;">
+<slide class="" id="slide-11" style="background:;">
   <hgroup>
     <h2>Exercises</h2>
   </hgroup>
@@ -378,7 +335,7 @@ legend(6.5, 4.2, c(&quot;setosa&quot;, &quot;versicolor&quot;, &quot;virginica&q
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-15" style="background:;">
+<slide class="" id="slide-12" style="background:;">
   <hgroup>
     <h2>Second component: <strong>Aesthetics</strong></h2>
   </hgroup>
@@ -400,12 +357,12 @@ legend(6.5, 4.2, c(&quot;setosa&quot;, &quot;versicolor&quot;, &quot;virginica&q
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-16" style="background:;">
+<slide class="" id="slide-13" style="background:;">
   <article data-timings="">
     <pre><code class="r">ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width))
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-10-1.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-9-1.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" style="display: block; margin: auto;" /></p>
 
 <div class="alert alert-warning alert-dismissable">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -416,7 +373,7 @@ legend(6.5, 4.2, c(&quot;setosa&quot;, &quot;versicolor&quot;, &quot;virginica&q
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-17" style="background:;">
+<slide class="" id="slide-14" style="background:;">
   <hgroup>
     <h2>Last but not least: <strong>geometry</strong></h2>
   </hgroup>
@@ -438,7 +395,7 @@ legend(6.5, 4.2, c(&quot;setosa&quot;, &quot;versicolor&quot;, &quot;virginica&q
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-18" style="background:;">
+<slide class="" id="slide-15" style="background:;">
   <article data-timings="">
     <pre><code class="r">ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point()
@@ -449,13 +406,13 @@ legend(6.5, 4.2, c(&quot;setosa&quot;, &quot;versicolor&quot;, &quot;virginica&q
 gp
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-12-1.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-19" style="background:;">
+<slide class="segue" id="slide-16" style="background:;">
   <hgroup>
     <h1>To Summarize</h1>
   </hgroup>
@@ -465,7 +422,7 @@ gp
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-20" style="background:;">
+<slide class="" id="slide-17" style="background:;">
   <hgroup>
     <h2>Basic Template</h2>
   </hgroup>
@@ -486,7 +443,7 @@ gp
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-21" style="background:;">
+<slide class="segue" id="slide-18" style="background:;">
   <hgroup>
     <h1>Themes</h1>
   </hgroup>
@@ -496,20 +453,20 @@ gp
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-22" style="background:;">
+<slide class="" id="slide-19" style="background:;">
   <article data-timings="">
     <p>Do not worry about the main visual ! Use themes.</p>
 
 <pre><code class="r">gp + theme_classic()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-23" style="background:;">
+<slide class="" id="slide-20" style="background:;">
   <article data-timings="">
     <p><a href="https://github.com/jrnold/ggthemes">https://github.com/jrnold/ggthemes</a></p>
 
@@ -520,28 +477,13 @@ library(ggthemes)
 gp + theme_economist() + scale_colour_economist()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-15-1.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-24" style="background:;">
-  <article data-timings="">
-    <p><a href="https://cran.r-project.org/web/packages/cowplot/index.html">https://cran.r-project.org/web/packages/cowplot/index.html</a></p>
-
-<pre><code class="r"># install.packages(&quot;cowplot&quot;)
-library(cowplot)
-gp
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" style="display: block; margin: auto;" /></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="segue" id="slide-25" style="background:;">
+<slide class="segue" id="slide-21" style="background:;">
   <hgroup>
     <h1>Aggregating aesthetics</h1>
   </hgroup>
@@ -551,7 +493,7 @@ gp
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-26" style="background:;">
+<slide class="" id="slide-22" style="background:;">
   <hgroup>
     <h2>Aggregating aesthetics</h2>
   </hgroup>
@@ -574,19 +516,19 @@ gp
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-27" style="background:;">
+<slide class="" id="slide-23" style="background:;">
   <article data-timings="">
     <pre><code class="r">ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point(mapping = aes(colour = Species))
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-28" style="background:;">
+<slide class="" id="slide-24" style="background:;">
   <article data-timings="">
     <ul>
 <li>We could have mapped class to the <code>size</code> aesthetic in the same way.</li>
@@ -600,13 +542,13 @@ gp
 <pre><code>## Warning: Using size for a discrete variable is not advised.
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-29" style="background:;">
+<slide class="" id="slide-25" style="background:;">
   <article data-timings="">
     <ul>
 <li>We also could have mapped class to the <code>shape</code> aesthetic in the same way but increasing <strong>all</strong> the points size.</li>
@@ -617,13 +559,13 @@ gp
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-30" style="background:;">
+<slide class="" id="slide-26" style="background:;">
   <article data-timings="">
     <pre><code class="r">ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point(mapping = aes(shape = Species), size = 3)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -637,19 +579,19 @@ gp
   </aside>
 </slide>
 
-<slide class="" id="slide-31" style="background:;">
+<slide class="" id="slide-27" style="background:;">
   <article data-timings="">
     <pre><code class="r">ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point(mapping = aes(shape = Species), size = 3, position = &quot;jitter&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-32" style="background:;">
+<slide class="" id="slide-28" style="background:;">
   <hgroup>
     <h2>Multitude of Shapes</h2>
   </hgroup>
@@ -671,7 +613,7 @@ gp
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-33" style="background:;">
+<slide class="" id="slide-29" style="background:;">
   <hgroup>
     <h2>Exercises</h2>
   </hgroup>
@@ -682,7 +624,7 @@ gp
   geom_point(mapping = aes(colour = &quot;blue&quot;))
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -703,7 +645,7 @@ gp
   geom_point(mapping = aes(colour = Species))
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" /></p>
 
 </div>
 <div style='float:right;width:48%;'>
@@ -711,19 +653,32 @@ gp
   geom_point(colour = &quot;blue&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-24-1.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" style="display: block; margin: auto;" /></p>
 
 </div>
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-35" style="background:;">
+<slide class="" id="slide-31" style="background:;">
   <article data-timings="">
     <p>Q2. What happens if you map an aesthetic to something other than a variable name, like <code>aes(colour = Sepal.Length &gt; 7)</code>?</p>
 
 <pre><code class="r">ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point(mapping = aes(colour = Sepal.Length &gt; 7))
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-32" style="background:;">
+  <article data-timings="">
+    <p>Q3. Take a subset of <code>diamonds</code> dataset and reproduce the following plot:</p>
+
+<pre><code class="r">d2 &lt;- diamonds[sample(1:dim(diamonds)[1],1000),]
 </code></pre>
 
 <p><img src="assets/fig/unnamed-chunk-25-1.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" style="display: block; margin: auto;" /></p>
@@ -732,20 +687,7 @@ gp
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-36" style="background:;">
-  <article data-timings="">
-    <p>Q3. Take a subset of <code>diamonds</code> dataset and reproduce the following plot:</p>
-
-<pre><code class="r">d2 &lt;- diamonds[sample(1:dim(diamonds)[1],1000),]
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-27-1.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" style="display: block; margin: auto;" /></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="segue" id="slide-37" style="background:;">
+<slide class="segue" id="slide-33" style="background:;">
   <hgroup>
     <h1>Line Plots</h1>
   </hgroup>
@@ -755,7 +697,7 @@ gp
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-38" style="background:;">
+<slide class="" id="slide-34" style="background:;">
   <article data-timings="">
     <ul>
 <li>A plot constructed with ggplot can have more than one geom</li>
@@ -767,26 +709,26 @@ gp
   geom_point(mapping = aes(colour = Species)) + geom_smooth(method = &quot;lm&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-28-1.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-26-1.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-39" style="background:;">
+<slide class="" id="slide-35" style="background:;">
   <article data-timings="">
     <pre><code class="r">ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point(mapping = aes(colour = Species)) +
     geom_smooth(method = &quot;lm&quot;, aes(color = Species))
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-29-1.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-27-1.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-40" style="background:;">
+<slide class="segue" id="slide-36" style="background:;">
   <hgroup>
     <h1>Facets</h1>
   </hgroup>
@@ -796,7 +738,7 @@ gp
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-41" style="background:;">
+<slide class="" id="slide-37" style="background:;">
   <hgroup>
     <h1>Faceting</h1>
   </hgroup>
@@ -815,13 +757,13 @@ gp
   geom_point(mapping = aes(colour = Species)) + geom_smooth(method = &quot;lm&quot;, aes(color = Species)) + facet_wrap(~Species)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-30-1.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-28-1.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-42" style="background:;">
+<slide class="" id="slide-38" style="background:;">
   <article data-timings="">
     <ul>
 <li>Faceting along rows</li>
@@ -832,13 +774,13 @@ gp
     geom_smooth(method = &quot;lm&quot;, aes(color = Species)) + facet_grid(. ~ Species)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-31-1.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-29-1.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-43" style="background:;">
+<slide class="segue" id="slide-39" style="background:;">
   <hgroup>
     <h1>Bar chart</h1>
   </hgroup>
@@ -848,7 +790,7 @@ gp
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-44" style="background:;">
+<slide class="" id="slide-40" style="background:;">
   <article data-timings="">
     <p>The following plot displays the total number of samples in the <code>iris</code> dataset grouped by <strong>Species</strong></p>
 
@@ -861,13 +803,13 @@ gp
     geom_bar(mapping = aes(x = Species, fill = Species))
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-32-1.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-30-1.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-45" style="background:;">
+<slide class="" id="slide-41" style="background:;">
   <article data-timings="">
     <table><thead>
 <tr>
@@ -926,7 +868,7 @@ gp
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-46" style="background:;">
+<slide class="" id="slide-42" style="background:;">
   <article data-timings="">
     <ul>
 <li>ggplot2 will compute new variables for our plot.</li>
@@ -939,7 +881,7 @@ gp
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-47" style="background:;">
+<slide class="" id="slide-43" style="background:;">
   <hgroup>
     <h2>Traditional bar chart</h2>
   </hgroup>
@@ -976,19 +918,19 @@ gp
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-48" style="background:;">
+<slide class="" id="slide-44" style="background:;">
   <article data-timings="">
     <pre><code class="r">ggplot(data = iris_count) + 
     geom_bar(mapping = aes(x = Species, y=freq, fill=Species), stat = &quot;identity&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-37-1.png" title="plot of chunk unnamed-chunk-37" alt="plot of chunk unnamed-chunk-37" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-35-1.png" title="plot of chunk unnamed-chunk-35" alt="plot of chunk unnamed-chunk-35" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-49" style="background:;">
+<slide class="" id="slide-45" style="background:;">
   <hgroup>
     <h2>Exercise</h2>
   </hgroup>
@@ -999,7 +941,7 @@ gp
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-50" style="background:;">
+<slide class="" id="slide-46" style="background:;">
   <hgroup>
     <h2>Exercise</h2>
   </hgroup>
@@ -1009,70 +951,69 @@ gp
 <pre><code class="r">ggplot(data = iris) + geom_histogram(mapping = aes(x = Petal.Width), binwidth = 0.3)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-38-1.png" title="plot of chunk unnamed-chunk-38" alt="plot of chunk unnamed-chunk-38" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-36-1.png" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-51" style="background:;">
+<slide class="" id="slide-47" style="background:;">
   <hgroup>
     <h2>Error bars</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>We can plug error bars into the chart. First let&#39;s tidy our data and calculate the mean and standard sample error for the length grouped by structure and Species.</li>
+<li>We can plug error bars into the chart. First let&#39;s tidy our data and calculate the mean and standard deviation for the length grouped by structure and Species.</li>
 </ul>
 
 <pre><code class="r">gather_iris &lt;- gather(iris, Sepal.Length:Petal.Width,
                              key=&quot;structure&quot;, value=&quot;size&quot;)
 iris_sum &lt;- gather_iris %&gt;% group_by(structure, Species) %&gt;%
-                    summarise(m = mean(size), sd = sd(size), sem = sd(size)/(sqrt(n())))
+                    summarise(m = mean(size), sd = sd(size))
 iris_sum
 </code></pre>
 
-<pre><code>## # A tibble: 12 x 5
-## # Groups:   structure [?]
-##    structure    Species        m    sd    sem
-##    &lt;chr&gt;        &lt;fct&gt;      &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
-##  1 Petal.Length setosa     1.46  0.174 0.0246
-##  2 Petal.Length versicolor 4.26  0.470 0.0665
-##  3 Petal.Length virginica  5.55  0.552 0.0780
-##  4 Petal.Width  setosa     0.246 0.105 0.0149
-##  5 Petal.Width  versicolor 1.33  0.198 0.0280
-##  6 Petal.Width  virginica  2.03  0.275 0.0388
-##  7 Sepal.Length setosa     5.01  0.352 0.0498
-##  8 Sepal.Length versicolor 5.94  0.516 0.0730
-##  9 Sepal.Length virginica  6.59  0.636 0.0899
-## 10 Sepal.Width  setosa     3.43  0.379 0.0536
-## 11 Sepal.Width  versicolor 2.77  0.314 0.0444
-## 12 Sepal.Width  virginica  2.97  0.322 0.0456
+<pre><code>## # A tibble: 12 x 4
+## # Groups:   structure [4]
+##    structure    Species        m    sd
+##    &lt;chr&gt;        &lt;fct&gt;      &lt;dbl&gt; &lt;dbl&gt;
+##  1 Petal.Length setosa     1.46  0.174
+##  2 Petal.Length versicolor 4.26  0.470
+##  3 Petal.Length virginica  5.55  0.552
+##  4 Petal.Width  setosa     0.246 0.105
+##  5 Petal.Width  versicolor 1.33  0.198
+##  6 Petal.Width  virginica  2.03  0.275
+##  7 Sepal.Length setosa     5.01  0.352
+##  8 Sepal.Length versicolor 5.94  0.516
+##  9 Sepal.Length virginica  6.59  0.636
+## 10 Sepal.Width  setosa     3.43  0.379
+## 11 Sepal.Width  versicolor 2.77  0.314
+## 12 Sepal.Width  virginica  2.97  0.322
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-52" style="background:;">
+<slide class="" id="slide-48" style="background:;">
   <article data-timings="">
     <p>So, to plot the mean with bars we need some data transformations.</p>
 
 <pre><code class="r">bar_ann &lt;- ggplot(data = iris_sum, mapping = aes(x = structure, y = m, fill = Species)) +
   geom_bar(position = &quot;dodge&quot;, stat = &quot;identity&quot;) +
   geom_errorbar(mapping = aes(ymin = (m-sd), ymax = (m+sd)),
-                width = .2, position=position_dodge(.9)) +
-    geom_errorbar(mapping = aes(ymin = (m-sem), ymax = (m+sem)), width = .2, position=position_dodge(0.9), colour=&#39;red&#39;) +
+                width = .2, position=position_dodge(.9), colour=&#39;red&#39;) +
   xlab(NULL) + ylab(&quot;mean&quot;)
 bar_ann
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-40-1.png" title="plot of chunk unnamed-chunk-40" alt="plot of chunk unnamed-chunk-40" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-38-1.png" title="plot of chunk unnamed-chunk-38" alt="plot of chunk unnamed-chunk-38" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-53" style="background:;">
+<slide class="segue" id="slide-49" style="background:;">
   <hgroup>
     <h1>Scales</h1>
   </hgroup>
@@ -1082,7 +1023,7 @@ bar_ann
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-54" style="background:;">
+<slide class="" id="slide-50" style="background:;">
   <hgroup>
     <h2>Scales</h2>
   </hgroup>
@@ -1097,13 +1038,13 @@ bar_ann
 p + scale_colour_brewer()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-41-1.png" title="plot of chunk unnamed-chunk-41" alt="plot of chunk unnamed-chunk-41" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-39-1.png" title="plot of chunk unnamed-chunk-39" alt="plot of chunk unnamed-chunk-39" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-55" style="background:;">
+<slide class="" id="slide-51" style="background:;">
   <hgroup>
     <h2>Colour</h2>
   </hgroup>
@@ -1115,13 +1056,13 @@ p + scale_colour_brewer()
 <pre><code class="r">p + scale_colour_brewer(palette = &quot;YlOrBr&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-42-1.png" title="plot of chunk unnamed-chunk-42" alt="plot of chunk unnamed-chunk-42" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-40-1.png" title="plot of chunk unnamed-chunk-40" alt="plot of chunk unnamed-chunk-40" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-56" style="background:;">
+<slide class="" id="slide-52" style="background:;">
   <hgroup>
     <h2>Colour</h2>
   </hgroup>
@@ -1133,13 +1074,13 @@ p + scale_colour_brewer()
 <pre><code class="r">p + scale_colour_manual(values = c(&quot;#4286f4&quot;, &quot;#1b4484&quot;, &quot;#051a3a&quot;))
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-43-1.png" title="plot of chunk unnamed-chunk-43" alt="plot of chunk unnamed-chunk-43" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-41-1.png" title="plot of chunk unnamed-chunk-41" alt="plot of chunk unnamed-chunk-41" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-57" style="background:;">
+<slide class="" id="slide-53" style="background:;">
   <hgroup>
     <h2>Guides: Legends and Axes</h2>
   </hgroup>
@@ -1161,7 +1102,7 @@ p + scale_colour_brewer()
   </aside>
 </slide>
 
-<slide class="" id="slide-58" style="background:;">
+<slide class="" id="slide-54" style="background:;">
   <hgroup>
     <h2>Scale Title</h2>
   </hgroup>
@@ -1171,32 +1112,13 @@ p + scale_colour_brewer()
 <pre><code class="r">p + xlab(&quot;Sepal Length \n(cm)&quot;) + ylab(&quot;Sepal Width (cm)&quot;) + labs(colour = &quot;Sp&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-44-1.png" title="plot of chunk unnamed-chunk-44" alt="plot of chunk unnamed-chunk-44" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-42-1.png" title="plot of chunk unnamed-chunk-42" alt="plot of chunk unnamed-chunk-42" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-59" style="background:;">
-  <hgroup>
-    <h2>Labels with math expressions</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>Use the template <code>+ expression(paste(&lt;STRING&gt;, &lt;MATH VAR&gt;, &lt;REMAINING STRING))</code>. Remove axis label with <code>NULL</code> expression.</li>
-</ul>
-
-<pre><code class="r">p + xlab(&quot;Sepal Length \n(cm)&quot;) + ylab(expression(paste(&quot;Sepal Width (&quot;,sqrt(cm),&quot;)&quot;))) + 
-  labs(colour = NULL) + scale_y_sqrt()
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-45-1.png" title="plot of chunk unnamed-chunk-45" alt="plot of chunk unnamed-chunk-45" style="display: block; margin: auto;" /></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-60" style="background:;">
+<slide class="" id="slide-55" style="background:;">
   <hgroup>
     <h2>Breaks</h2>
   </hgroup>
@@ -1206,7 +1128,7 @@ p + scale_colour_brewer()
 <pre><code class="r">p + scale_x_continuous( breaks = seq(4, 8, 0.5) )
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-46-1.png" title="plot of chunk unnamed-chunk-46" alt="plot of chunk unnamed-chunk-46" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-43-1.png" title="plot of chunk unnamed-chunk-43" alt="plot of chunk unnamed-chunk-43" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -1218,20 +1140,20 @@ p + scale_colour_brewer()
   </aside>
 </slide>
 
-<slide class="" id="slide-61" style="background:;">
+<slide class="" id="slide-56" style="background:;">
   <article data-timings="">
     <p>Each break can have an associated label, controlled by the labels argument.</p>
 
 <pre><code class="r">p + scale_x_continuous( breaks = seq(4, 8, 0.5) , labels = paste(seq(4, 8, 0.5), &quot;cm&quot;))
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-47-1.png" title="plot of chunk unnamed-chunk-47" alt="plot of chunk unnamed-chunk-47" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-44-1.png" title="plot of chunk unnamed-chunk-44" alt="plot of chunk unnamed-chunk-44" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-62" style="background:;">
+<slide class="" id="slide-57" style="background:;">
   <hgroup>
     <h2>Legends and fonts</h2>
   </hgroup>
@@ -1254,13 +1176,13 @@ p + scale_colour_brewer()
                                      expression(paste(&quot;Iris &quot;, italic(&quot;virginica&quot;))))
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-48-1.png" title="plot of chunk unnamed-chunk-48" alt="plot of chunk unnamed-chunk-48" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-45-1.png" title="plot of chunk unnamed-chunk-45" alt="plot of chunk unnamed-chunk-45" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-64" style="background:;">
+<slide class="segue" id="slide-59" style="background:;">
   <hgroup>
     <h1>Box Plot</h1>
   </hgroup>
@@ -1270,12 +1192,12 @@ p + scale_colour_brewer()
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-65" style="background:;">
+<slide class="" id="slide-60" style="background:;">
   <article data-timings="">
     <ul>
 <li>Use box plots to illustrate the spread and differences of samples.</li>
 <li>\(n=20\) samples from \(N(0,1)\).
-<img src="assets/fig/unnamed-chunk-49-1.png" title="plot of chunk unnamed-chunk-49" alt="plot of chunk unnamed-chunk-49" style="display: block; margin: auto;" /></li>
+<img src="assets/fig/unnamed-chunk-46-1.png" title="plot of chunk unnamed-chunk-46" alt="plot of chunk unnamed-chunk-46" style="display: block; margin: auto;" /></li>
 </ul>
 
 <pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
@@ -1302,7 +1224,7 @@ p + scale_colour_brewer()
   </aside>
 </slide>
 
-<slide class="" id="slide-66" style="background:;">
+<slide class="" id="slide-61" style="background:;">
   <hgroup>
     <h2>Exercises</h2>
   </hgroup>
@@ -1317,7 +1239,7 @@ p + scale_colour_brewer()
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-67" style="background:;">
+<slide class="" id="slide-62" style="background:;">
   <article data-timings="">
     <p>R1.</p>
 
@@ -1326,13 +1248,13 @@ p + scale_colour_brewer()
   scale_x_discrete(limits = c(&quot;Petal.Width&quot;, &quot;Sepal.Width&quot;, &quot;Petal.Length&quot;, &quot;Sepal.Length&quot;))
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-52-1.png" title="plot of chunk unnamed-chunk-52" alt="plot of chunk unnamed-chunk-52" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-49-1.png" title="plot of chunk unnamed-chunk-49" alt="plot of chunk unnamed-chunk-49" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-68" style="background:;">
+<slide class="" id="slide-63" style="background:;">
   <article data-timings="">
     <p>Q2. With the same dataset construct a bar plot with the mean of each variable (tip: <code>geom_bar()</code>). Why it&#39;s not working?</p>
 
@@ -1344,7 +1266,7 @@ p + scale_colour_brewer()
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-69" style="background:;">
+<slide class="" id="slide-64" style="background:;">
   <hgroup>
     <h2>Labels and Paths</h2>
   </hgroup>
@@ -1372,7 +1294,7 @@ p + scale_colour_brewer()
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-70" style="background:;">
+<slide class="" id="slide-65" style="background:;">
   <article data-timings="">
     <p>1.Subset the data</p>
 
@@ -1393,7 +1315,7 @@ head(iris_2sp)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-71" style="background:;">
+<slide class="" id="slide-66" style="background:;">
   <article data-timings="">
     <p>2.Plot and label</p>
 
@@ -1404,13 +1326,13 @@ head(iris_2sp)
 boxall
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-56-1.png" title="plot of chunk unnamed-chunk-56" alt="plot of chunk unnamed-chunk-56" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-53-1.png" title="plot of chunk unnamed-chunk-53" alt="plot of chunk unnamed-chunk-53" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-72" style="background:;">
+<slide class="segue" id="slide-67" style="background:;">
   <hgroup>
     <h1>ggpubr: Publication Ready Plots</h1>
   </hgroup>
@@ -1420,7 +1342,7 @@ boxall
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-73" style="background:;">
+<slide class="" id="slide-68" style="background:;">
   <article data-timings="">
     <p>Features:</p>
 
@@ -1434,7 +1356,7 @@ boxall
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-74" style="background:;">
+<slide class="" id="slide-69" style="background:;">
   <article data-timings="">
     <pre><code class="r">library(ggpubr)
 my_comparisons = list( c(&quot;setosa&quot;, &quot;virginica&quot;) )
@@ -1445,13 +1367,13 @@ p &lt;- ggboxplot(iris_2sp, x = &quot;Species&quot;, y=&quot;Petal.Length&quot;,
 p
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-57-1.png" title="plot of chunk unnamed-chunk-57" alt="plot of chunk unnamed-chunk-57" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-54-1.png" title="plot of chunk unnamed-chunk-54" alt="plot of chunk unnamed-chunk-54" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-75" style="background:;">
+<slide class="" id="slide-70" style="background:;">
   <article data-timings="">
     <pre><code class="r">plabeled &lt;- ggboxplot(iris_2sp, x = &quot;Species&quot;, y=&quot;Petal.Length&quot;, color=&quot;Species&quot;, 
                       add=&quot;jitter&quot;, shape=&quot;Species&quot;) +
@@ -1460,13 +1382,13 @@ p
 plabeled
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-58-1.png" title="plot of chunk unnamed-chunk-58" alt="plot of chunk unnamed-chunk-58" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-55-1.png" title="plot of chunk unnamed-chunk-55" alt="plot of chunk unnamed-chunk-55" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-76" style="background:;">
+<slide class="" id="slide-71" style="background:;">
   <hgroup>
     <h2>Bar chart with error bars</h2>
   </hgroup>
@@ -1475,13 +1397,13 @@ plabeled
           add=c(&quot;mean_sd&quot;), palette = &quot;jco&quot;, position = position_dodge(0.9), ylab=&quot;mean&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-59-1.png" title="plot of chunk unnamed-chunk-59" alt="plot of chunk unnamed-chunk-59" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-56-1.png" title="plot of chunk unnamed-chunk-56" alt="plot of chunk unnamed-chunk-56" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-77" style="background:;">
+<slide class="segue" id="slide-72" style="background:;">
   <hgroup>
     <h1>Saving Plots</h1>
   </hgroup>
@@ -1491,7 +1413,7 @@ plabeled
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-78" style="background:;">
+<slide class="" id="slide-73" style="background:;">
   <article data-timings="">
     <ul>
 <li>If the plot is on your screen</li>
@@ -1528,103 +1450,7 @@ ggsave(&quot;~/path/to/figure/filename.pdf&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-79" style="background:;">
-  <hgroup>
-    <h1>Placing multiple plots</h1>
-  </hgroup>
-  <article data-timings="">
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-80" style="background:;">
-  <article data-timings="">
-    <pre><code class="r">library(cowplot)
-</code></pre>
-
-<p><img width=50% height=50% src="figure/canvas.png" align="middle"></img></p>
-
-<pre><code class="r">ggdraw()
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-61-1.png" title="plot of chunk unnamed-chunk-61" alt="plot of chunk unnamed-chunk-61" style="display: block; margin: auto;" /></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-81" style="background:;">
-  <article data-timings="">
-    <pre><code class="r">ggdraw() + draw_plot(boxall, x = 0, y = 0, 
-                     width = 0.5, height = 1) +
-           draw_plot(p, x = 0.5, y = 0,
-                     width = 0.5, height = 1)
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-62-1.png" title="plot of chunk unnamed-chunk-62" alt="plot of chunk unnamed-chunk-62" style="display: block; margin: auto;" /></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-82" style="background:;">
-  <article data-timings="">
-    <pre><code class="r">library(RColorBrewer)
-
-pal &lt;- brewer.pal(name = &quot;RdYlBu&quot;, n = 3)
-
-pmulti &lt;- ggdraw() +
-    draw_plot(bar_ann + scale_fill_manual(values = pal) + 
-                  theme(axis.text.x = element_text(angle=60, vjust=0.5), 
-                        plot.margin = unit(c(6,0,6,0), &quot;pt&quot;), legend.position = &quot;none&quot;) + 
-                  ylab(&quot;&quot;), x = 0, y = 0.1, width = 0.5, height = 0.8) 
-</code></pre>
-
-<pre><code class="r">pmulti &lt;- pmulti + draw_plot(p + scale_colour_manual(values = c(pal[1], pal[3])) + 
-                  theme(plot.margin = unit(c(6,6,6,6), &quot;pt&quot;)) + 
-                  theme(legend.position = &quot;none&quot;), x = 0.5, y = 0.2,
-                    width = 0.25, height = 0.8) +
-    draw_plot(plabeled + scale_colour_manual(values = c(pal[1], pal[3])) +
-                  theme(plot.margin = unit(c(6,6,6,6), &quot;pt&quot;))+ 
-                  theme(legend.position = &quot;none&quot;), x = 0.75, y = 0.2,
-                    width = 0.25, height = 0.8)
-</code></pre>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-83" style="background:;">
-  <article data-timings="">
-    <pre><code class="r"># write plot labels (A, B, C ...)
-pmulti &lt;- pmulti + draw_plot_label(label = c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;), 
-                                   size = 15, x = c(0, 0.5, 0.75), y =c(1, 1, 1))
-
-# extract the legend from one of the plots
-# (clearly the whole thing only makes sense if all plots
-# have the same legend, so we can arbitrarily pick one.)
-legend &lt;- get_legend(bar_ann + theme(legend.position = &quot;bottom&quot;) + scale_fill_manual(values = pal))
-pmulti &lt;- pmulti + draw_plot(legend, x=0, y=0)
-</code></pre>
-
-<pre><code class="r">#save_plot(&quot;/Users/rodtheo/Downloads/temp/firstDeck/figure/multiplot.png&quot;, 
-#               pmulti, base_height = 8, base_width=12)
-</code></pre>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-84" style="background:;">
-  <article data-timings="">
-    <p><img width=75% height=75% src="figure/multiplot.png" align="middle"></img></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="segue" id="slide-85" style="background:;">
+<slide class="segue" id="slide-74" style="background:;">
   <hgroup>
     <h1>The End...</h1>
   </hgroup>
@@ -1634,7 +1460,7 @@ pmulti &lt;- pmulti + draw_plot(legend, x=0, y=0)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-86" style="background:;">
+<slide class="" id="slide-75" style="background:;">
   <article data-timings="">
     
   </article>
@@ -1659,121 +1485,121 @@ pmulti &lt;- pmulti + draw_plot(legend, x=0, y=0)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Introduction'>
+        data-slide=3 title='Rationale behind ggplot2'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='&quot;A picture is worth a thousand words&quot;'>
+        data-slide=4 title='R base vs ggplot2'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='&quot;A picture is worth a thousand words&quot;'>
+        data-slide=5 title='R base vs ggplot2'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Rationale behind ggplot2'>
+        data-slide=6 title='Why ggplot2'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='R base vs ggplot2'>
+        data-slide=7 title='3 Key Components'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='R base vs ggplot2'>
+        data-slide=8 title='RStudio&#39;s data visualization cheatsheet'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Why ggplot2'>
+        data-slide=9 title='&quot;Hello World&quot; Plot'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='3 Key Components'>
+        data-slide=10 title='First component: <strong>Data</strong>'>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='RStudio&#39;s data visualization cheatsheet'>
+        data-slide=11 title='Exercises'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='&quot;Hello World&quot; Plot'>
+        data-slide=12 title='Second component: <strong>Aesthetics</strong>'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='First component: <strong>Data</strong>'>
+        data-slide=13 title='NA'>
          13
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='Exercises'>
+        data-slide=14 title='Last but not least: <strong>geometry</strong>'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='Second component: <strong>Aesthetics</strong>'>
+        data-slide=15 title='NA'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='NA'>
+        data-slide=16 title='To Summarize'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='Last but not least: <strong>geometry</strong>'>
+        data-slide=17 title='Basic Template'>
          17
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='NA'>
+        data-slide=18 title='Themes'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='To Summarize'>
+        data-slide=19 title='NA'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='Basic Template'>
+        data-slide=20 title='NA'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='Themes'>
+        data-slide=21 title='Aggregating aesthetics'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='NA'>
+        data-slide=22 title='Aggregating aesthetics'>
          22
       </a>
     </li>
@@ -1791,13 +1617,13 @@ pmulti &lt;- pmulti + draw_plot(legend, x=0, y=0)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='Aggregating aesthetics'>
+        data-slide=25 title='NA'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='Aggregating aesthetics'>
+        data-slide=26 title='NA'>
          26
       </a>
     </li>
@@ -1809,19 +1635,19 @@ pmulti &lt;- pmulti + draw_plot(legend, x=0, y=0)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='NA'>
+        data-slide=28 title='Multitude of Shapes'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='NA'>
+        data-slide=29 title='Exercises'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='NA'>
+        data-slide=30 title='Inside vs Outside parameters'>
          30
       </a>
     </li>
@@ -1833,19 +1659,19 @@ pmulti &lt;- pmulti + draw_plot(legend, x=0, y=0)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='Multitude of Shapes'>
+        data-slide=32 title='NA'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='Exercises'>
+        data-slide=33 title='Line Plots'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Inside vs Outside parameters'>
+        data-slide=34 title='NA'>
          34
       </a>
     </li>
@@ -1857,13 +1683,13 @@ pmulti &lt;- pmulti + draw_plot(legend, x=0, y=0)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='NA'>
+        data-slide=36 title='Facets'>
          36
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='Line Plots'>
+        data-slide=37 title='Faceting'>
          37
       </a>
     </li>
@@ -1875,19 +1701,19 @@ pmulti &lt;- pmulti + draw_plot(legend, x=0, y=0)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='NA'>
+        data-slide=39 title='Bar chart'>
          39
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='Facets'>
+        data-slide=40 title='NA'>
          40
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=41 title='Faceting'>
+        data-slide=41 title='NA'>
          41
       </a>
     </li>
@@ -1899,7 +1725,7 @@ pmulti &lt;- pmulti + draw_plot(legend, x=0, y=0)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=43 title='Bar chart'>
+        data-slide=43 title='Traditional bar chart'>
          43
       </a>
     </li>
@@ -1911,19 +1737,19 @@ pmulti &lt;- pmulti + draw_plot(legend, x=0, y=0)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=45 title='NA'>
+        data-slide=45 title='Exercise'>
          45
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=46 title='NA'>
+        data-slide=46 title='Exercise'>
          46
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=47 title='Traditional bar chart'>
+        data-slide=47 title='Error bars'>
          47
       </a>
     </li>
@@ -1935,85 +1761,85 @@ pmulti &lt;- pmulti + draw_plot(legend, x=0, y=0)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=49 title='Exercise'>
+        data-slide=49 title='Scales'>
          49
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=50 title='Exercise'>
+        data-slide=50 title='Scales'>
          50
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=51 title='Error bars'>
+        data-slide=51 title='Colour'>
          51
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=52 title='NA'>
+        data-slide=52 title='Colour'>
          52
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=53 title='Scales'>
+        data-slide=53 title='Guides: Legends and Axes'>
          53
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=54 title='Scales'>
+        data-slide=54 title='Scale Title'>
          54
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=55 title='Colour'>
+        data-slide=55 title='Breaks'>
          55
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=56 title='Colour'>
+        data-slide=56 title='NA'>
          56
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=57 title='Guides: Legends and Axes'>
+        data-slide=57 title='Legends and fonts'>
          57
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=58 title='Scale Title'>
+        data-slide=58 title='NA'>
          58
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=59 title='Labels with math expressions'>
+        data-slide=59 title='Box Plot'>
          59
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=60 title='Breaks'>
+        data-slide=60 title='NA'>
          60
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=61 title='NA'>
+        data-slide=61 title='Exercises'>
          61
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=62 title='Legends and fonts'>
+        data-slide=62 title='NA'>
          62
       </a>
     </li>
@@ -2025,7 +1851,7 @@ pmulti &lt;- pmulti + draw_plot(legend, x=0, y=0)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=64 title='Box Plot'>
+        data-slide=64 title='Labels and Paths'>
          64
       </a>
     </li>
@@ -2037,13 +1863,13 @@ pmulti &lt;- pmulti + draw_plot(legend, x=0, y=0)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=66 title='Exercises'>
+        data-slide=66 title='NA'>
          66
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=67 title='NA'>
+        data-slide=67 title='ggpubr: Publication Ready Plots'>
          67
       </a>
     </li>
@@ -2055,7 +1881,7 @@ pmulti &lt;- pmulti + draw_plot(legend, x=0, y=0)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=69 title='Labels and Paths'>
+        data-slide=69 title='NA'>
          69
       </a>
     </li>
@@ -2067,13 +1893,13 @@ pmulti &lt;- pmulti + draw_plot(legend, x=0, y=0)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=71 title='NA'>
+        data-slide=71 title='Bar chart with error bars'>
          71
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=72 title='ggpubr: Publication Ready Plots'>
+        data-slide=72 title='Saving Plots'>
          72
       </a>
     </li>
@@ -2085,7 +1911,7 @@ pmulti &lt;- pmulti + draw_plot(legend, x=0, y=0)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=74 title='NA'>
+        data-slide=74 title='The End...'>
          74
       </a>
     </li>
@@ -2093,72 +1919,6 @@ pmulti &lt;- pmulti + draw_plot(legend, x=0, y=0)
       <a href="#" target="_self" rel='tooltip' 
         data-slide=75 title='NA'>
          75
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=76 title='Bar chart with error bars'>
-         76
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=77 title='Saving Plots'>
-         77
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=78 title='NA'>
-         78
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=79 title='Placing multiple plots'>
-         79
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=80 title='NA'>
-         80
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=81 title='NA'>
-         81
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=82 title='NA'>
-         82
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=83 title='NA'>
-         83
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=84 title='NA'>
-         84
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=85 title='The End...'>
-         85
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=86 title='NA'>
-         86
       </a>
     </li>
   </ul>

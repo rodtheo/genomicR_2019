@@ -58,7 +58,6 @@ mark {
 
 ## Outline
 
-1. Introduction
 2. Rationale behind ggplot2
 3. "Hello World" Plot
 4. Basic Template
@@ -75,49 +74,6 @@ mark {
 ```{r, echo = FALSE, message=FALSE}
 library(tidyverse)
 ```
-
---- .segue
-
-# Introduction
-
----
-
-## "A picture is worth a thousand words"
-
-- Show Challenger space shuttle disaster (Edward R. Tufte book)
-
-```{r fig.align='center', fig.width=9, fig.height=7, echo=FALSE, message=FALSE}
-# install.packages("DAAG")
-library(DAAG)
-data(orings)
-
-Damage <- c(11, 4, 4, 2, 0,0,0,0,0,0,4,0,4,0,0,0,0,4,0,0,0,0,0)
-oring <- cbind(orings, Damage)
-
-oring_C <- oring %>% mutate(Temperature_C=(Temperature-32)*(5/9))
-
-# we tell ggplot to use oring data + which is the x and the y variable
-# + plot points + give limits for the x axis
-chal1 <- ggplot(oring_C, aes(x= Temperature_C,y=jitter(Damage, factor=1/5) )  ) +
-  geom_point() + xlim(-5,30) + stat_smooth(method = loess, se=FALSE) +
-    annotate("rect", xmin=-3, xmax=-1,ymin=0,ymax=10,alpha=.3,fill="red") +
-    annotate("text", x=0, y=3,label="forecast \n temperature \n -3 to -1 C") +
-    ylab("Damage") + xlab("Temperature (C)") + theme_classic()
-chal1
-
-```
-
----
-
-## "A picture is worth a thousand words"
-
-- Always plot the data.
-
-- Replace (or complement) 'typical' tables of data or statistical results with figures that are more compelling and accessible.
-
-- Whenever possible, generate figures that overlay / juxtapose observed data and analytical results, e.g. the 'fit'.
-
-(source: jenny@UBC)
 
 --- .segue
 
@@ -350,17 +306,6 @@ https://cran.r-project.org/web/packages/ggsci/vignettes/ggsci.html
 # install.packages("ggthemes")
 library(ggthemes)
 gp + theme_economist() + scale_colour_economist()
-```
-
----
-
-https://cran.r-project.org/web/packages/cowplot/index.html
-
-
-```{r fig.align='center', fig.width=7, fig.height=5}
-# install.packages("cowplot")
-library(cowplot)
-gp
 ```
 
 --- .segue
@@ -616,13 +561,13 @@ ggplot(data = iris) + geom_histogram(mapping = aes(x = Petal.Width), binwidth = 
 
 ## Error bars
 
-- We can plug error bars into the chart. First let's tidy our data and calculate the mean and standard sample error for the length grouped by structure and Species.
+- We can plug error bars into the chart. First let's tidy our data and calculate the mean and standard deviation for the length grouped by structure and Species.
 
 ```{r}
 gather_iris <- gather(iris, Sepal.Length:Petal.Width,
                              key="structure", value="size")
 iris_sum <- gather_iris %>% group_by(structure, Species) %>%
-                    summarise(m = mean(size), sd = sd(size), sem = sd(size)/(sqrt(n())))
+                    summarise(m = mean(size), sd = sd(size))
 iris_sum
 ```
 
@@ -634,8 +579,7 @@ So, to plot the mean with bars we need some data transformations.
 bar_ann <- ggplot(data = iris_sum, mapping = aes(x = structure, y = m, fill = Species)) +
   geom_bar(position = "dodge", stat = "identity") +
   geom_errorbar(mapping = aes(ymin = (m-sd), ymax = (m+sd)),
-                width = .2, position=position_dodge(.9)) +
-    geom_errorbar(mapping = aes(ymin = (m-sem), ymax = (m+sem)), width = .2, position=position_dodge(0.9), colour='red') +
+                width = .2, position=position_dodge(.9), colour='red') +
   xlab(NULL) + ylab("mean")
 bar_ann
 ```
@@ -701,19 +645,6 @@ Supply text strings (using `\n` for line breaks) or mathematical expressions in 
 ```{r fig.align='center', fig.width = 7, fig.height=5}
 
 p + xlab("Sepal Length \n(cm)") + ylab("Sepal Width (cm)") + labs(colour = "Sp")
-
-```
-
----
-
-## Labels with math expressions
-
-- Use the template `+ expression(paste(<STRING>, <MATH VAR>, <REMAINING STRING))`. Remove axis label with `NULL` expression.
-
-```{r fig.align='center', fig.width = 7, fig.height=5}
-
-p + xlab("Sepal Length \n(cm)") + ylab(expression(paste("Sepal Width (",sqrt(cm),")"))) + 
-  labs(colour = NULL) + scale_y_sqrt()
 
 ```
 
@@ -938,85 +869,6 @@ ggsave("~/path/to/figure/filename.eps")
 ggsave("~/path/to/figure/filename.svg")
 ggsave("~/path/to/figure/filename.pdf")
 ```
-
---- .segue
-
-# Placing multiple plots
-
----
-
-```{r}
-library(cowplot)
-```
-
-
-<img width=50% height=50% src="figure/canvas.png" align="middle"></img>
-
-
-```{r, fig.align='center', fig.width=5, fig.height=5}
-ggdraw()
-```
-
----
-
-```{r fig.align='center'}
-ggdraw() + draw_plot(boxall, x = 0, y = 0, 
-                     width = 0.5, height = 1) +
-           draw_plot(p, x = 0.5, y = 0,
-                     width = 0.5, height = 1)
-```
-
----
-
-```{r}
-library(RColorBrewer)
-
-pal <- brewer.pal(name = "RdYlBu", n = 3)
-
-pmulti <- ggdraw() +
-    draw_plot(bar_ann + scale_fill_manual(values = pal) + 
-                  theme(axis.text.x = element_text(angle=60, vjust=0.5), 
-                        plot.margin = unit(c(6,0,6,0), "pt"), legend.position = "none") + 
-                  ylab(""), x = 0, y = 0.1, width = 0.5, height = 0.8) 
-```
-
-```{r}
-pmulti <- pmulti + draw_plot(p + scale_colour_manual(values = c(pal[1], pal[3])) + 
-                  theme(plot.margin = unit(c(6,6,6,6), "pt")) + 
-                  theme(legend.position = "none"), x = 0.5, y = 0.2,
-                    width = 0.25, height = 0.8) +
-    draw_plot(plabeled + scale_colour_manual(values = c(pal[1], pal[3])) +
-                  theme(plot.margin = unit(c(6,6,6,6), "pt"))+ 
-                  theme(legend.position = "none"), x = 0.75, y = 0.2,
-                    width = 0.25, height = 0.8)
-```
-
----
-
-```{r}
-# write plot labels (A, B, C ...)
-pmulti <- pmulti + draw_plot_label(label = c("A", "B", "C"), 
-                                   size = 15, x = c(0, 0.5, 0.75), y =c(1, 1, 1))
-
-# extract the legend from one of the plots
-# (clearly the whole thing only makes sense if all plots
-# have the same legend, so we can arbitrarily pick one.)
-legend <- get_legend(bar_ann + theme(legend.position = "bottom") + scale_fill_manual(values = pal))
-pmulti <- pmulti + draw_plot(legend, x=0, y=0)
-```
-
-```{r, eval = FALSE, echo = FALSE}
-pmulti
-```
-
-```{r}
-#save_plot("/Users/rodtheo/Downloads/temp/firstDeck/figure/multiplot.png", 
-#               pmulti, base_height = 8, base_width=12)
-```
-
----
-
-<img width=75% height=75% src="figure/multiplot.png" align="middle"></img>
 
 --- .segue
 
