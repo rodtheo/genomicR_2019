@@ -68,7 +68,7 @@ mark {
 9. Histograms
 10. Scales
 11. Box Plot
-12. ggpubr + Multiple Plots Same Figure
+12. ggpubr
 13. Saving Plots
 
 ```{r, echo = FALSE, message=FALSE}
