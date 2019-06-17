@@ -1,6 +1,6 @@
 ---
 title: "Data Manipulation"
-author: Rodrigo Theodoro Rocha
+author: Rodrigo Theodoro Rocha (@rodtheo)
 date: 11 de Outubro 2018
 output: 
   slidy_presentation:
