@@ -1,7 +1,7 @@
 ---
 title       : Data visualization with R & ggplot2
 subtitle    : Hands-on tutorial
-author      : Rodrigo Theodoro Rocha
+author      : Rodrigo Theodoro Rocha (@rodtheo)
 job         : 
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
@@ -68,7 +68,7 @@ mark {
 9. Histograms
 10. Scales
 11. Box Plot
-12. ggpubr + Multiple Plots Same Figure
+12. ggpubr
 13. Saving Plots
 
 
@@ -654,17 +654,17 @@ ggplot(data = iris) + geom_histogram(mapping = aes(x = Petal.Width), binwidth = 
 
 
 ```r
-gather_iris <- gather(iris, Sepal.Length:Petal.Width,
-                             key="structure", value="size")
-iris_sum <- gather_iris %>% group_by(structure, Species) %>%
-                    summarise(m = mean(size), sd = sd(size))
+iris_tidy <- gather(iris, Sepal.Length:Petal.Width,
+                             key="Measure_type", value="Values")
+iris_sum <- iris_tidy %>% group_by(Measure_type, Species) %>%
+                    summarise(m = mean(Values), sd = sd(Values))
 iris_sum
 ```
 
 ```
 ## # A tibble: 12 x 4
-## # Groups:   structure [4]
-##    structure    Species        m    sd
+## # Groups:   Measure_type [4]
+##    Measure_type Species        m    sd
 ##    <chr>        <fct>      <dbl> <dbl>
 ##  1 Petal.Length setosa     1.46  0.174
 ##  2 Petal.Length versicolor 4.26  0.470
@@ -855,8 +855,8 @@ Q1. Use the following transformation of iris data to plot a boxplot for all disc
 
 
 ```r
-gather_iris <- tidyr::gather(iris, Sepal.Length:Petal.Width,
-                             key="structure", value="size")
+iris_tidy <- tidyr::gather(iris, Sepal.Length:Petal.Width,
+                             key="Measure_type", value="Values")
 ```
 
 ---
@@ -866,27 +866,19 @@ R1.
 
 ```r
 ggplot(data = gather_iris) + 
-  geom_boxplot(mapping = aes(x = structure, y = size, colour = Species)) +
+  geom_boxplot(mapping = aes(x = Measure_type, y = Values, colour = Species)) +
   scale_x_discrete(limits = c("Petal.Width", "Sepal.Width", "Petal.Length", "Sepal.Length"))
 ```
 
-<img src="assets/fig/unnamed-chunk-49-1.png" title="plot of chunk unnamed-chunk-49" alt="plot of chunk unnamed-chunk-49" style="display: block; margin: auto;" />
-
----
-
-Q2. With the same dataset construct a bar plot with the mean of each variable (tip: `geom_bar()`). Why it's not working?
-
-
-```r
-#ggplot(data = gather_iris) + 
-# geom_bar(mapping = aes(x = structure, y = size, colour = Species))
+```
+## Error in ggplot(data = gather_iris): object 'gather_iris' not found
 ```
 
 ---
 
 ## Labels and Paths
 
-- Suppose we plot the box plot the Petal's length for Iris setosa and Iris virginica. We compare the mean between the two distributions as we can see bellow. How do we plot the significance? 
+- Suppose we draw a box plot of Petal's length for Iris setosa and Iris virginica. We compare the mean between the two distributions by a t-test. How do we plot the significance? 
 
 
 ```
@@ -903,7 +895,7 @@ Q2. With the same dataset construct a bar plot with the mean of each variable (t
 ##     1.462     5.552
 ```
 
-Adding text to a plot can be quite tricky. The main tool is `geom_text()` which adds labels at specified `x` and `y` positions.
+Adding text to a plot can be quite **annoying**. The main tool is `geom_text()` which adds labels at specified `x` and `y` positions.
 
 ---
 
@@ -911,7 +903,7 @@ Adding text to a plot can be quite tricky. The main tool is `geom_text()` which 
 
 
 ```r
-iris_2sp <- iris[iris$Species %in% c("setosa", "virginica"), ]
+iris_2sp <- iris %>% filter(Species == "setosa" | Species == "virginica")
 head(iris_2sp)
 ```
 
@@ -938,7 +930,7 @@ boxall <- ggplot(data = iris_2sp) +
 boxall
 ```
 
-<img src="assets/fig/unnamed-chunk-53-1.png" title="plot of chunk unnamed-chunk-53" alt="plot of chunk unnamed-chunk-53" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-52-1.png" title="plot of chunk unnamed-chunk-52" alt="plot of chunk unnamed-chunk-52" style="display: block; margin: auto;" />
 
 --- .segue
 
@@ -965,7 +957,7 @@ p <- ggboxplot(iris_2sp, x = "Species", y="Petal.Length", color="Species",
 p
 ```
 
-<img src="assets/fig/unnamed-chunk-54-1.png" title="plot of chunk unnamed-chunk-54" alt="plot of chunk unnamed-chunk-54" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-53-1.png" title="plot of chunk unnamed-chunk-53" alt="plot of chunk unnamed-chunk-53" style="display: block; margin: auto;" />
 
 ---
 
@@ -978,7 +970,7 @@ plabeled <- ggboxplot(iris_2sp, x = "Species", y="Petal.Length", color="Species"
 plabeled
 ```
 
-<img src="assets/fig/unnamed-chunk-55-1.png" title="plot of chunk unnamed-chunk-55" alt="plot of chunk unnamed-chunk-55" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-54-1.png" title="plot of chunk unnamed-chunk-54" alt="plot of chunk unnamed-chunk-54" style="display: block; margin: auto;" />
 
 ---
 
@@ -986,11 +978,11 @@ plabeled
 
 
 ```r
-ggbarplot(gather_iris, x = "structure", y = "size", color = "Species", 
+ggbarplot(iris_tidy, x = "Measure_type", y = "Values", color = "Species", 
           add=c("mean_sd"), palette = "jco", position = position_dodge(0.9), ylab="mean")
 ```
 
-<img src="assets/fig/unnamed-chunk-56-1.png" title="plot of chunk unnamed-chunk-56" alt="plot of chunk unnamed-chunk-56" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-55-1.png" title="plot of chunk unnamed-chunk-55" alt="plot of chunk unnamed-chunk-55" style="display: block; margin: auto;" />
 
 
 --- .segue

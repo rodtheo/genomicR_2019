@@ -564,10 +564,10 @@ ggplot(data = iris) + geom_histogram(mapping = aes(x = Petal.Width), binwidth = 
 - We can plug error bars into the chart. First let's tidy our data and calculate the mean and standard deviation for the length grouped by structure and Species.
 
 ```{r}
-gather_iris <- gather(iris, Sepal.Length:Petal.Width,
-                             key="structure", value="size")
-iris_sum <- gather_iris %>% group_by(structure, Species) %>%
-                    summarise(m = mean(size), sd = sd(size))
+iris_tidy <- gather(iris, Sepal.Length:Petal.Width,
+                             key="Measure_type", value="Values")
+iris_sum <- iris_tidy %>% group_by(Measure_type, Species) %>%
+                    summarise(m = mean(Values), sd = sd(Values))
 iris_sum
 ```
 
@@ -736,8 +736,8 @@ Because they are based on statistics that do not require us to assume anything a
 Q1. Use the following transformation of iris data to plot a boxplot for all discreve variables (i.e. Sepal.Width, Sepal.Length, Petal.Width, Petal.Length) coloured by Species names.
 
 ```{r cache=TRUE, fig.align='center', fig.width=7, fig.height=5}
-gather_iris <- tidyr::gather(iris, Sepal.Length:Petal.Width,
-                             key="structure", value="size")
+iris_tidy <- tidyr::gather(iris, Sepal.Length:Petal.Width,
+                             key="Measure_type", value="Values")
 ```
 
 ---
@@ -746,38 +746,29 @@ R1.
 
 ```{r fig.align='center', fig.width=9, fig.height=6}
 ggplot(data = gather_iris) + 
-  geom_boxplot(mapping = aes(x = structure, y = size, colour = Species)) +
+  geom_boxplot(mapping = aes(x = Measure_type, y = Values, colour = Species)) +
   scale_x_discrete(limits = c("Petal.Width", "Sepal.Width", "Petal.Length", "Sepal.Length"))
-```
-
----
-
-Q2. With the same dataset construct a bar plot with the mean of each variable (tip: `geom_bar()`). Why it's not working?
-
-```{r}
-#ggplot(data = gather_iris) + 
-# geom_bar(mapping = aes(x = structure, y = size, colour = Species))
 ```
 
 ---
 
 ## Labels and Paths
 
-- Suppose we plot the box plot the Petal's length for Iris setosa and Iris virginica. We compare the mean between the two distributions as we can see bellow. How do we plot the significance? 
+- Suppose we draw a box plot of Petal's length for Iris setosa and Iris virginica. We compare the mean between the two distributions by a t-test. How do we plot the significance? 
 
 ```{r echo = FALSE}
 t <- t.test(iris[iris$Species == "setosa", "Petal.Length"], iris[iris$Species == "virginica", "Petal.Length"])
 t
 ```
 
-Adding text to a plot can be quite tricky. The main tool is `geom_text()` which adds labels at specified `x` and `y` positions.
+Adding text to a plot can be quite **annoying**. The main tool is `geom_text()` which adds labels at specified `x` and `y` positions.
 
 ---
 
 1.Subset the data
 
 ```{r}
-iris_2sp <- iris[iris$Species %in% c("setosa", "virginica"), ]
+iris_2sp <- iris %>% filter(Species == "setosa" | Species == "virginica")
 head(iris_2sp)
 ```
 
@@ -832,7 +823,7 @@ plabeled
 ## Bar chart with error bars
 
 ```{r fig.align='center', fig.width=8, fig.height=6}
-ggbarplot(gather_iris, x = "structure", y = "size", color = "Species", 
+ggbarplot(iris_tidy, x = "Measure_type", y = "Values", color = "Species", 
           add=c("mean_sd"), palette = "jco", position = position_dodge(0.9), ylab="mean")
 ```
 

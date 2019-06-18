@@ -4,7 +4,7 @@
   <title>Data visualization with R &amp; ggplot2</title>
   <meta charset="utf-8">
   <meta name="description" content="Data visualization with R &amp; ggplot2">
-  <meta name="author" content="Rodrigo Theodoro Rocha">
+  <meta name="author" content="Rodrigo Theodoro Rocha (@rodtheo)">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -37,7 +37,7 @@
   <hgroup class="auto-fadein">
     <h1>Data visualization with R &amp; ggplot2</h1>
     <h2>Hands-on tutorial</h2>
-    <p>Rodrigo Theodoro Rocha<br/></p>
+    <p>Rodrigo Theodoro Rocha (@rodtheo)<br/></p>
   </hgroup>
   <article></article>  
 </slide>
@@ -108,7 +108,7 @@ mark {
 <li>Histograms</li>
 <li>Scales</li>
 <li>Box Plot</li>
-<li>ggpubr + Multiple Plots Same Figure</li>
+<li>ggpubr</li>
 <li>Saving Plots</li>
 </ol>
 
@@ -966,16 +966,16 @@ gp + theme_economist() + scale_colour_economist()
 <li>We can plug error bars into the chart. First let&#39;s tidy our data and calculate the mean and standard deviation for the length grouped by structure and Species.</li>
 </ul>
 
-<pre><code class="r">gather_iris &lt;- gather(iris, Sepal.Length:Petal.Width,
-                             key=&quot;structure&quot;, value=&quot;size&quot;)
-iris_sum &lt;- gather_iris %&gt;% group_by(structure, Species) %&gt;%
-                    summarise(m = mean(size), sd = sd(size))
+<pre><code class="r">iris_tidy &lt;- gather(iris, Sepal.Length:Petal.Width,
+                             key=&quot;Measure_type&quot;, value=&quot;Values&quot;)
+iris_sum &lt;- iris_tidy %&gt;% group_by(Measure_type, Species) %&gt;%
+                    summarise(m = mean(Values), sd = sd(Values))
 iris_sum
 </code></pre>
 
 <pre><code>## # A tibble: 12 x 4
-## # Groups:   structure [4]
-##    structure    Species        m    sd
+## # Groups:   Measure_type [4]
+##    Measure_type Species        m    sd
 ##    &lt;chr&gt;        &lt;fct&gt;      &lt;dbl&gt; &lt;dbl&gt;
 ##  1 Petal.Length setosa     1.46  0.174
 ##  2 Petal.Length versicolor 4.26  0.470
@@ -1231,8 +1231,8 @@ p + scale_colour_brewer()
   <article data-timings="">
     <p>Q1. Use the following transformation of iris data to plot a boxplot for all discreve variables (i.e. Sepal.Width, Sepal.Length, Petal.Width, Petal.Length) coloured by Species names.</p>
 
-<pre><code class="r">gather_iris &lt;- tidyr::gather(iris, Sepal.Length:Petal.Width,
-                             key=&quot;structure&quot;, value=&quot;size&quot;)
+<pre><code class="r">iris_tidy &lt;- tidyr::gather(iris, Sepal.Length:Petal.Width,
+                             key=&quot;Measure_type&quot;, value=&quot;Values&quot;)
 </code></pre>
 
   </article>
@@ -1244,35 +1244,24 @@ p + scale_colour_brewer()
     <p>R1.</p>
 
 <pre><code class="r">ggplot(data = gather_iris) + 
-  geom_boxplot(mapping = aes(x = structure, y = size, colour = Species)) +
+  geom_boxplot(mapping = aes(x = Measure_type, y = Values, colour = Species)) +
   scale_x_discrete(limits = c(&quot;Petal.Width&quot;, &quot;Sepal.Width&quot;, &quot;Petal.Length&quot;, &quot;Sepal.Length&quot;))
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-49-1.png" title="plot of chunk unnamed-chunk-49" alt="plot of chunk unnamed-chunk-49" style="display: block; margin: auto;" /></p>
+<pre><code>## Error in ggplot(data = gather_iris): object &#39;gather_iris&#39; not found
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-63" style="background:;">
-  <article data-timings="">
-    <p>Q2. With the same dataset construct a bar plot with the mean of each variable (tip: <code>geom_bar()</code>). Why it&#39;s not working?</p>
-
-<pre><code class="r">#ggplot(data = gather_iris) + 
-# geom_bar(mapping = aes(x = structure, y = size, colour = Species))
-</code></pre>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-64" style="background:;">
   <hgroup>
     <h2>Labels and Paths</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Suppose we plot the box plot the Petal&#39;s length for Iris setosa and Iris virginica. We compare the mean between the two distributions as we can see bellow. How do we plot the significance? </li>
+<li>Suppose we draw a box plot of Petal&#39;s length for Iris setosa and Iris virginica. We compare the mean between the two distributions by a t-test. How do we plot the significance? </li>
 </ul>
 
 <pre><code>## 
@@ -1288,17 +1277,17 @@ p + scale_colour_brewer()
 ##     1.462     5.552
 </code></pre>
 
-<p>Adding text to a plot can be quite tricky. The main tool is <code>geom_text()</code> which adds labels at specified <code>x</code> and <code>y</code> positions.</p>
+<p>Adding text to a plot can be quite <strong>annoying</strong>. The main tool is <code>geom_text()</code> which adds labels at specified <code>x</code> and <code>y</code> positions.</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-65" style="background:;">
+<slide class="" id="slide-64" style="background:;">
   <article data-timings="">
     <p>1.Subset the data</p>
 
-<pre><code class="r">iris_2sp &lt;- iris[iris$Species %in% c(&quot;setosa&quot;, &quot;virginica&quot;), ]
+<pre><code class="r">iris_2sp &lt;- iris %&gt;% filter(Species == &quot;setosa&quot; | Species == &quot;virginica&quot;)
 head(iris_2sp)
 </code></pre>
 
@@ -1315,7 +1304,7 @@ head(iris_2sp)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-66" style="background:;">
+<slide class="" id="slide-65" style="background:;">
   <article data-timings="">
     <p>2.Plot and label</p>
 
@@ -1326,13 +1315,13 @@ head(iris_2sp)
 boxall
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-53-1.png" title="plot of chunk unnamed-chunk-53" alt="plot of chunk unnamed-chunk-53" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-52-1.png" title="plot of chunk unnamed-chunk-52" alt="plot of chunk unnamed-chunk-52" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-67" style="background:;">
+<slide class="segue" id="slide-66" style="background:;">
   <hgroup>
     <h1>ggpubr: Publication Ready Plots</h1>
   </hgroup>
@@ -1342,7 +1331,7 @@ boxall
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-68" style="background:;">
+<slide class="" id="slide-67" style="background:;">
   <article data-timings="">
     <p>Features:</p>
 
@@ -1356,7 +1345,7 @@ boxall
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-69" style="background:;">
+<slide class="" id="slide-68" style="background:;">
   <article data-timings="">
     <pre><code class="r">library(ggpubr)
 my_comparisons = list( c(&quot;setosa&quot;, &quot;virginica&quot;) )
@@ -1367,13 +1356,13 @@ p &lt;- ggboxplot(iris_2sp, x = &quot;Species&quot;, y=&quot;Petal.Length&quot;,
 p
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-54-1.png" title="plot of chunk unnamed-chunk-54" alt="plot of chunk unnamed-chunk-54" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-53-1.png" title="plot of chunk unnamed-chunk-53" alt="plot of chunk unnamed-chunk-53" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-70" style="background:;">
+<slide class="" id="slide-69" style="background:;">
   <article data-timings="">
     <pre><code class="r">plabeled &lt;- ggboxplot(iris_2sp, x = &quot;Species&quot;, y=&quot;Petal.Length&quot;, color=&quot;Species&quot;, 
                       add=&quot;jitter&quot;, shape=&quot;Species&quot;) +
@@ -1382,28 +1371,28 @@ p
 plabeled
 </code></pre>
 
+<p><img src="assets/fig/unnamed-chunk-54-1.png" title="plot of chunk unnamed-chunk-54" alt="plot of chunk unnamed-chunk-54" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-70" style="background:;">
+  <hgroup>
+    <h2>Bar chart with error bars</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">ggbarplot(iris_tidy, x = &quot;Measure_type&quot;, y = &quot;Values&quot;, color = &quot;Species&quot;, 
+          add=c(&quot;mean_sd&quot;), palette = &quot;jco&quot;, position = position_dodge(0.9), ylab=&quot;mean&quot;)
+</code></pre>
+
 <p><img src="assets/fig/unnamed-chunk-55-1.png" title="plot of chunk unnamed-chunk-55" alt="plot of chunk unnamed-chunk-55" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-71" style="background:;">
-  <hgroup>
-    <h2>Bar chart with error bars</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">ggbarplot(gather_iris, x = &quot;structure&quot;, y = &quot;size&quot;, color = &quot;Species&quot;, 
-          add=c(&quot;mean_sd&quot;), palette = &quot;jco&quot;, position = position_dodge(0.9), ylab=&quot;mean&quot;)
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-56-1.png" title="plot of chunk unnamed-chunk-56" alt="plot of chunk unnamed-chunk-56" style="display: block; margin: auto;" /></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="segue" id="slide-72" style="background:;">
+<slide class="segue" id="slide-71" style="background:;">
   <hgroup>
     <h1>Saving Plots</h1>
   </hgroup>
@@ -1413,7 +1402,7 @@ plabeled
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-73" style="background:;">
+<slide class="" id="slide-72" style="background:;">
   <article data-timings="">
     <ul>
 <li>If the plot is on your screen</li>
@@ -1450,7 +1439,7 @@ ggsave(&quot;~/path/to/figure/filename.pdf&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-74" style="background:;">
+<slide class="segue" id="slide-73" style="background:;">
   <hgroup>
     <h1>The End...</h1>
   </hgroup>
@@ -1460,7 +1449,7 @@ ggsave(&quot;~/path/to/figure/filename.pdf&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-75" style="background:;">
+<slide class="" id="slide-74" style="background:;">
   <article data-timings="">
     
   </article>
@@ -1845,13 +1834,13 @@ ggsave(&quot;~/path/to/figure/filename.pdf&quot;)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=63 title='NA'>
+        data-slide=63 title='Labels and Paths'>
          63
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=64 title='Labels and Paths'>
+        data-slide=64 title='NA'>
          64
       </a>
     </li>
@@ -1863,13 +1852,13 @@ ggsave(&quot;~/path/to/figure/filename.pdf&quot;)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=66 title='NA'>
+        data-slide=66 title='ggpubr: Publication Ready Plots'>
          66
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=67 title='ggpubr: Publication Ready Plots'>
+        data-slide=67 title='NA'>
          67
       </a>
     </li>
@@ -1887,38 +1876,32 @@ ggsave(&quot;~/path/to/figure/filename.pdf&quot;)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=70 title='NA'>
+        data-slide=70 title='Bar chart with error bars'>
          70
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=71 title='Bar chart with error bars'>
+        data-slide=71 title='Saving Plots'>
          71
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=72 title='Saving Plots'>
+        data-slide=72 title='NA'>
          72
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=73 title='NA'>
+        data-slide=73 title='The End...'>
          73
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=74 title='The End...'>
+        data-slide=74 title='NA'>
          74
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=75 title='NA'>
-         75
       </a>
     </li>
   </ul>
