@@ -865,14 +865,12 @@ R1.
 
 
 ```r
-ggplot(data = gather_iris) + 
+ggplot(data = iris_tidy) + 
   geom_boxplot(mapping = aes(x = Measure_type, y = Values, colour = Species)) +
   scale_x_discrete(limits = c("Petal.Width", "Sepal.Width", "Petal.Length", "Sepal.Length"))
 ```
 
-```
-## Error in ggplot(data = gather_iris): object 'gather_iris' not found
-```
+<img src="assets/fig/unnamed-chunk-49-1.png" title="plot of chunk unnamed-chunk-49" alt="plot of chunk unnamed-chunk-49" style="display: block; margin: auto;" />
 
 ---
 

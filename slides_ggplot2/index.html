@@ -1243,13 +1243,12 @@ p + scale_colour_brewer()
   <article data-timings="">
     <p>R1.</p>
 
-<pre><code class="r">ggplot(data = gather_iris) + 
+<pre><code class="r">ggplot(data = iris_tidy) + 
   geom_boxplot(mapping = aes(x = Measure_type, y = Values, colour = Species)) +
   scale_x_discrete(limits = c(&quot;Petal.Width&quot;, &quot;Sepal.Width&quot;, &quot;Petal.Length&quot;, &quot;Sepal.Length&quot;))
 </code></pre>
 
-<pre><code>## Error in ggplot(data = gather_iris): object &#39;gather_iris&#39; not found
-</code></pre>
+<p><img src="assets/fig/unnamed-chunk-49-1.png" title="plot of chunk unnamed-chunk-49" alt="plot of chunk unnamed-chunk-49" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->

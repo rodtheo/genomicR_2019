@@ -745,7 +745,7 @@ iris_tidy <- tidyr::gather(iris, Sepal.Length:Petal.Width,
 R1.
 
 ```{r fig.align='center', fig.width=9, fig.height=6}
-ggplot(data = gather_iris) + 
+ggplot(data = iris_tidy) + 
   geom_boxplot(mapping = aes(x = Measure_type, y = Values, colour = Species)) +
   scale_x_discrete(limits = c("Petal.Width", "Sepal.Width", "Petal.Length", "Sepal.Length"))
 ```

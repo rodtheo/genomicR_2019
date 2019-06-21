@@ -375,27 +375,6 @@ arrange(iris_tidy, desc(Values))
 
 * * *
 
-## Exercise
-
-1. Find the 10 most expressed genes when restricted by nutrient leucine (L).
-
-* * *
-
-## Exercise
-
-1. Find the 10 most expressed genes when restricted by nutrient leucine (L).
-
-```{r}
-
-#top10 <- cleaned_data %>% filter(nutrient == "L") %>%
-                        #      arrange(desc(expression))
-
-#top10_leu <- top10[1:10,]
-#top10_leu
-```
-
-* * *
-
 # Summarizing data with `summarise()`
 
 - Collapses a data frame to a "single row"
